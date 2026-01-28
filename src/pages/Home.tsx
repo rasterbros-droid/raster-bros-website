@@ -166,7 +166,7 @@ export default function Home() {
                 href="mailto:hello@rasterbros.com"
                 className="inline-block text-xl border-b border-black/20 pb-1 hover:border-black transition-colors"
               >
-                hello@rasterbros.com
+                rasterbros@gmail.com
               </a>
             </div>
             <div className="flex flex-col justify-end items-start md:items-end">
