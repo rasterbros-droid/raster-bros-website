@@ -1,31 +1,51 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-42372ed130431b0a.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
+  "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/iIy_JbqrrnVZQW5UT1L2N/_buildManifest.js",
+    "static/iIy_JbqrrnVZQW5UT1L2N/_ssgManifest.js"
   ],
-  "rootMainFiles": [],
+  "rootMainFiles": [
+    "static/chunks/webpack-135c2e2e7e5ea94e.js",
+    "static/chunks/fd9d1056-749e5812300142af.js",
+    "static/chunks/main-app-9167ffb4b107a8d7.js"
+  ],
   "pages": {
     "/[[...slug]]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/[[...slug]].js"
+      "static/chunks/webpack-135c2e2e7e5ea94e.js",
+      "static/chunks/framework-9025984a6e43db96.js",
+      "static/chunks/main-6070b0c016426351.js",
+      "static/chunks/pages/[[...slug]]-8ea3c8fac29ae22b.js"
     ],
     "/_app": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/webpack-135c2e2e7e5ea94e.js",
+      "static/chunks/framework-9025984a6e43db96.js",
+      "static/chunks/main-6070b0c016426351.js",
+      "static/css/2e0d99818fb60e43.css",
+      "static/chunks/pages/_app-85242d6360f520fb.js"
     ],
     "/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/webpack-135c2e2e7e5ea94e.js",
+      "static/chunks/framework-9025984a6e43db96.js",
+      "static/chunks/main-6070b0c016426351.js",
+      "static/chunks/pages/_error-7ba65e1336b92748.js"
+    ],
+    "/join-internship": [
+      "static/chunks/webpack-135c2e2e7e5ea94e.js",
+      "static/chunks/framework-9025984a6e43db96.js",
+      "static/chunks/main-6070b0c016426351.js",
+      "static/chunks/574-0b1910358dd2b4ac.js",
+      "static/chunks/pages/join-internship-ce924c5e015318b1.js"
+    ],
+    "/join-intership": [
+      "static/chunks/webpack-135c2e2e7e5ea94e.js",
+      "static/chunks/framework-9025984a6e43db96.js",
+      "static/chunks/main-6070b0c016426351.js",
+      "static/chunks/574-0b1910358dd2b4ac.js",
+      "static/chunks/pages/join-intership-21eba24d3bb301e2.js"
     ]
   },
   "ampFirstPages": []

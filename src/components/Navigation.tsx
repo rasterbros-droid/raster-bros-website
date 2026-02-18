@@ -21,6 +21,7 @@ export function Navigation() {
     { name: "Work", href: "#work" },
     { name: "Studio", href: "#studio" },
     { name: "Contact", href: "#contact" },
+    { name: "Join Internship", href: "/join-internship" }
   ];
 
   return (
@@ -65,24 +66,42 @@ export function Navigation() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-12">
-            {navLinks?.map((link) => (
-              <a
-                key={link?.name}
-                href={link?.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const target = document.querySelector(link.href);
-                  if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
-              </a>
-            ))}
+            {navLinks.map((link) => {
+
+              const isAnchor = link.href.startsWith("#");
+
+              if (!isAnchor) {
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
+                  </Link>
+                );
+              }
+
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.href);
+                    if (target) target.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
+                </a>
+              );
+
+            })}
           </nav>
+
 
           {/* Mobile Menu Toggle */}
           <button
@@ -110,24 +129,42 @@ export function Navigation() {
               <X className="w-8 h-8" />
             </button>
             <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsMobileMenuOpen(false);
-                    const target = document.querySelector(link.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="font-display text-4xl font-bold hover:text-white/50 transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+
+                const isAnchor = link.href.startsWith("#");
+
+                if (!isAnchor) {
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="font-display text-4xl font-bold hover:text-white/50 transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMobileMenuOpen(false);
+                      const target = document.querySelector(link.href);
+                      if (target) target.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="font-display text-4xl font-bold hover:text-white/50 transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                );
+
+              })}
             </nav>
+
           </motion.div>
         )}
       </AnimatePresence>
