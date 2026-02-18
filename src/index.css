@@ -4,9 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+/* html {
   scroll-behavior: smooth;
 }
+
+* {
+  cursor: none;
+}
+
+.scale-125 {
+  transform: scale(1.25);
+} */
+
+
 
 :root {
   --font-sans: 'Manrope', sans-serif;

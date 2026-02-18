@@ -1,4 +1,6 @@
-import { Link } from "wouter";
+"use client";
+
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -31,7 +33,7 @@ export function Navigation() {
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          <Link
+          {/* <Link
             href="/"
             className="flex items-center gap-2 font-display text-xl sm:text-4xl font-bold tracking-tighter hover:opacity-70 transition-opacity bg-gradient-to-r from-white via-blue-300 to-red-500 bg-clip-text text-transparent"
           >
@@ -40,16 +42,33 @@ export function Navigation() {
               alt="Website logo"
               className="w-14 h-14 shadow-4xl"
             />
-            RasterBros
+            <span>RasterBros</span> <br />
+            <span className="text-sm text-white">
+              PRIVATE LIMITED</span>
+          </Link> */}
+          <Link href="/" className="flex items-center gap-4">
+            <div className="h-16 flex items-center">
+              <img
+                src="/apple-touch-icon.png"
+                alt="Logo"
+                className="h-16 w-auto object-contain block"
+              />
+            </div>
+            <div className="flex items-center mt-3">
+              <img
+                src="/Rasterbros-Title.png"
+                alt="Title"
+                className="h-12 w-auto object-contain block"
+              />
+            </div>
           </Link>
-
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-12">
-            {navLinks.map((link) => (
+            {navLinks?.map((link) => (
               <a
-                key={link.name}
-                href={link.href}
+                key={link?.name}
+                href={link?.href}
                 onClick={(e) => {
                   e.preventDefault();
                   const target = document.querySelector(link.href);

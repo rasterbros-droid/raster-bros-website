@@ -10,7 +10,7 @@ export const ProjectSchema = z.object({
   year: z.string(),
   slug: z.string(),
   isFeatured: z.boolean(),
-  workType: z.enum(["movie", "photography", "advertisement", "web-series"]),
+  workType: z.enum(["song","movie", "photography", "advertisement", "web-series", "videography",  "biography"]),
   bannerVideo: z.string().nullable(),
   carouselImages: z.array(z.string()),
   galleryImages: z.array(z.string()),

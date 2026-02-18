@@ -38,20 +38,19 @@ export function Hero() {
 
           <motion.h1
             className="
-                      font-display
-                      text-[6vw]
-                      leading-[0.8]
-                      font-bold
-                      tracking-tighter
-                      text-transparent
-                      bg-clip-text
-                      bg-[length:200%_200%]
-                      bg-gradient-to-r
-                      from-white
-                      via-blue-300
-                      to-red-500
-                      mb-8
-                    "
+                  font-display
+                  text-[6vw]
+                  leading-[0.8]
+                  font-bold
+                  tracking-tighter
+                  text-transparent
+                  bg-clip-text
+                  bg-gradient-to-r
+                  from-white
+                  to-red-500
+                  mb-8
+                "
+
             initial={{ opacity: 0, y: 100 }}
             animate={{
               opacity: 1,

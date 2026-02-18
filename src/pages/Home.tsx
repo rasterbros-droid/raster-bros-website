@@ -1,8 +1,10 @@
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useProjects } from "@/hooks/use-projects";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
-import { Marquee } from "@/components/Marquee";
+import ImageMarquee from "@/components/Marquee";
+import ProjectsCarousel from "@/components/ProjectsCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -10,7 +12,7 @@ export default function Home() {
   const { data: projects, isLoading } = useProjects();
 
   return (
-    <div className="bg-background min-h-screen text-foreground selection:bg-white selection:text-black overflow-x-hidden">
+    <div className="cursor-focus bg-background min-h-screen text-foreground selection:bg-white selection:text-black overflow-x-hidden">
       <Navigation />
 
       <Hero />
@@ -83,14 +85,14 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="px-6 py-20">
+      {/*  {/* <section id="work" className="px-6 py-20">
         <div className="container mx-auto mb-16 flex justify-between items-end">
           <h2 className="text-4xl md:text-6xl font-display font-bold">
             Selected Work
           </h2>
           <span className="hidden md:inline-block text-white/40">
             {/* (2023 — 2024) */}
-          </span>
+      {/* </span>
         </div>
 
         {isLoading ? (
@@ -110,23 +112,48 @@ export default function Home() {
             ))}
           </div>
         )}
+      </section> */}
+
+      {/* Latest Releases - Carousel (below Selected Work) */}
+      <section id="work" className="px-6 py-20">
+        <div className="container mx-auto mb-12">
+          <h2 className="text-4xl md:text-6xl font-display font-bold">
+            Latest Releases
+          </h2>
+        </div>
+
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20 container mx-auto">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="animate-pulse">
+                <div className="aspect-[3/4] bg-white/5 rounded-sm mb-4" />
+                <div className="h-6 w-2/3 bg-white/5 rounded mb-2" />
+                <div className="h-4 w-1/3 bg-white/5 rounded" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="container mx-auto px-0 ">
+            <ProjectsCarousel projects={projects || []} />
+          </div>
+        )}
       </section>
 
-      <Marquee />
+      {/* <Marquee /> */}
+      <ImageMarquee />
 
       {/* Capabilities Section */}
-      <section className="container mx-auto px-6 py-32 border-t border-white/10">
+      <section className="container mx-auto px-6 py-32 border-t border-white/10" id="services">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
           <div>
             <h3 className="text-2xl font-display mb-8">Our Services</h3>
             <ul className="space-y-4">
               {[
-                "Movie Shooting",
-                "Photography",
-                "Videography",
-                "Web Series Production",
-                "Brand Commercials",
-                "Post-Production",
+                "Feature Movies",
+                "Music Videos",
+                "OTT Films",
+                "Branded Commercials",
+                "Web Series Production"
               ].map((item) => (
                 <li
                   key={item}
@@ -153,7 +180,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-white text-black py-20 px-6">
+      {/* <footer id="contact" className="bg-white text-black py-20 px-6">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
             <div>
@@ -193,7 +220,220 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </footer> */}
+
+      <footer id="contact" className="bg-white text-black py-20 px-6">
+        <div className="container mx-auto">
+          {/* TOP GRID */}
+          <div className="grid md:grid-cols-3 gap-16 border-b border-black/10 pb-16">
+
+            {/* LEFT — Brand */}
+            <div>
+              {/* <h2 className="text-5xl md:text-7xl font-display font-bold leading-none mb-8 tracking-tighter">
+                LET'S WORK
+                <br />
+                TOGETHER
+              </h2>
+              <a
+                href="mailto:hello@rasterbros.com"
+                className="inline-block text-xl border-b border-black/20 pb-1 hover:border-black transition-colors"
+              >
+                rasterbros@gmail.com
+              </a> */}
+              {/* <h2 className="text-3xl font-semibold mb-6">RasterBros</h2> */}
+              <h2 className="text-5xl md:text-7xl font-display font-bold leading-none mb-8 tracking-tighter">RasterBros</h2>
+
+              <p className="text-black/60 leading-relaxed max-w-md mb-6">
+                A creative film studio crafting cinematic stories through intent,
+                craft, and evolving workflows.
+              </p>
+
+              <p className="italic text-xl text-black/80">
+                Turning Vision Into Pixels.
+              </p>
+            </div>
+
+
+            {/* CENTER — Navigation */}
+            <div className="md:pl-12 border-l border-black/10">
+              <ul className="space-y-3 text-black/70">
+                <li>
+                  <a href="/" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >Home</a>
+                </li>
+                <li>
+                  <a href="#studio" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      const target = document.querySelector('#studio');
+                      if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >About</a>
+                </li>
+                <li>
+                  <a href="#work" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      const target = document.querySelector('#work');
+                      if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >Work</a>
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      const target = document.querySelector('#services');
+                      if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >Process</a>
+
+                  {/* <a href="#work" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      const target = document.querySelector('#work');
+                      if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >Work</a> */}
+                </li>
+                <li>
+                  <a href="#services" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      const target = document.querySelector('#services');
+                      if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >Services</a>
+                </li>
+                <li>
+                  <a href="#contact" className="hover:text-black transition"
+                    onClick={e => {
+                      e.preventDefault();
+                      const target = document.querySelector('#contact');
+                      if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }}>
+
+                    Contact
+                  </a>
+
+                </li>
+              </ul>
+            </div>
+
+
+            {/* RIGHT — CTA + Social */}
+            <div className="md:pl-12 border-l border-black/10">
+
+              <h4 className="text-xl italic mb-6 text-black/90">
+                Let's Work Together
+              </h4>
+
+              <a
+                href="mailto:rasterbros@gmail.com"
+                className="
+            inline-block
+            px-6 py-3
+            rounded-lg
+            bg-black/10
+            hover:bg-black/20
+            transition
+            mb-8">
+                Start a Conversation
+              </a>
+
+              <div className="space-y-2 text-black/70">
+                <a href="https://www.instagram.com/rasterbros" target="_blank" className="block hover:text-black">Instagram</a>
+                <a href="https://www.youtube.com/@RasterBros" target="_blank" className="block hover:text-black">YouTube</a>
+                <a href="#" className="block hover:text-black">Vimeo</a>
+                <a href="#" className="block hover:text-black">LinkedIn</a>
+              </div>
+
+              <p className="mt-6 text-black/40 text-sm">
+                Available worldwide
+              </p>
+
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-black/10 text-sm opacity-60">
+            <p>&copy; RasterBros Private Limited, 2026 — All rights reserved.</p>
+          </div>
+        </div>
       </footer>
+
+      {/* <footer id="contact" className="bg-[#0b0f1a] text-white py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-16 border-b border-white/10 pb-16">
+            <div>
+              <h3 className="text-3xl font-semibold mb-6">RasterBros</h3>
+
+              <p className="text-white/60 leading-relaxed max-w-md mb-6">
+                A creative film studio crafting cinematic stories through intent,
+                craft, and evolving workflows.
+              </p>
+
+              <p className="italic text-xl text-white/80">
+                Turning Vision Into Pixels.
+              </p>
+            </div>
+
+            <div className="md:pl-12 border-l border-white/10">
+              <ul className="space-y-3 text-white/70">
+                <li><a href="/" className="hover:text-white transition">Home</a></li>
+                <li><a href="#" className="hover:text-white transition">About</a></li>
+                <li><a href="#" className="hover:text-white transition">Work</a></li>
+                <li><a href="#" className="hover:text-white transition">Process</a></li>
+                <li><a href="#" className="hover:text-white transition">Services</a></li>
+                <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
+              </ul>
+            </div>
+
+
+            <div className="md:pl-12 border-l border-white/10">
+
+              <h4 className="text-xl italic mb-6 text-white/90">
+                Let's Work Together
+              </h4>
+
+              <a
+                href="mailto:rasterbros@gmail.com"
+                className="
+            inline-block
+            px-6 py-3
+            rounded-lg
+            bg-white/10
+            hover:bg-white/20
+            transition
+            mb-8
+          "
+              >
+                Start a Conversation
+              </a>
+
+              <div className="space-y-2 text-white/70">
+                <a href="https://www.instagram.com/rasterbros" target="_blank" className="block hover:text-white">Instagram</a>
+                <a href="https://www.youtube.com/@RasterBros" target="_blank" className="block hover:text-white">YouTube</a>
+                <a href="#" className="block hover:text-white">Vimeo</a>
+                <a href="#" className="block hover:text-white">LinkedIn</a>
+              </div>
+
+              <p className="mt-6 text-white/40 text-sm">
+                Available worldwide
+              </p>
+
+            </div>
+          </div>
+          <div className="pt-8 text-white/40 text-sm">
+            © RasterBros Private Limited, 2026 — All rights reserved.
+          </div>
+
+        </div>
+      </footer> */}
+
     </div>
   );
 }
