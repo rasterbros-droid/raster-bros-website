@@ -133,7 +133,7 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div className="container mx-auto px-0 ">
+          <div className="container mx-auto px-0 md:px-6">
             <ProjectsCarousel projects={projects || []} />
           </div>
         )}

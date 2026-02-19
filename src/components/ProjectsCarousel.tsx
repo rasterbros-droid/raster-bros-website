@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { ProjectCard } from "./ProjectCard";
 import type { Project } from "@/lib/schema";
@@ -77,12 +77,24 @@ function NextArrow({ onClick }: any) {
 
 /* ---------- Carousel Component ---------- */
 export default function ProjectsCarousel({ projects }: Props) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: !isMobile, // Hide arrows on mobile
     infinite: true,
 
-    slidesToShow: 3,
+    slidesToShow: isMobile ? 1 : 3, // Force 1 on mobile, 3 on desktop
     slidesToScroll: 1,
 
     autoplay: true,
@@ -95,17 +107,21 @@ export default function ProjectsCarousel({ projects }: Props) {
     swipeToSlide: true,
     touchThreshold: 10,
 
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
+    prevArrow: isMobile ? <></> : <PrevArrow />,
+    nextArrow: isMobile ? <></> : <NextArrow />,
 
     responsive: [
       {
         breakpoint: 1024,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1 },
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          infinite: true,
+          arrows: false,
+          swipe: true,
+          touchMove: true,
+        },
       },
     ],
   };
@@ -114,10 +130,10 @@ export default function ProjectsCarousel({ projects }: Props) {
 
 
   return (
-    <div className="relative ">
+    <div className="relative overflow-hidden w-full max-w-full projects-carousel-wrapper">
       <Slider {...settings}>
         {projects.map((project, index) => (
-          <div key={project.id} className="px-4 cursor-pointer">
+          <div key={project.id} className="px-2 md:px-4 cursor-pointer">
             <ProjectCard
               project={project}
               index={index}
