@@ -21,7 +21,7 @@ function PrevArrow({ onClick }: any) {
       onClick={onClick}
       aria-label="Previous"
       className="
-        absolute -left-4 top-1/2 z-20 
+        absolute -left-4 top-1/2 z-50 
         -translate-y-1/2
         flex items-center justify-center
         w-11 h-11
@@ -50,7 +50,7 @@ function NextArrow({ onClick }: any) {
       onClick={onClick}
       aria-label="Next"
       className="
-        absolute -right-4 top-1/2 z-20 
+        absolute -right-4 top-1/2 z-50 
         -translate-y-1/2
         flex items-center justify-center
         w-11 h-11
@@ -130,7 +130,7 @@ export default function ProjectsCarousel({ projects }: Props) {
 
 
   return (
-    <div className="relative overflow-hidden w-full max-w-full projects-carousel-wrapper">
+    <div className="relative overflow-visible w-full max-w-full projects-carousel-wrapper">
       <Slider {...settings}>
         {projects.map((project, index) => (
           <div key={project.id} className="px-2 md:px-4 cursor-pointer">
