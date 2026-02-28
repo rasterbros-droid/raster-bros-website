@@ -88,30 +88,65 @@ export default function ProjectDetail() {
       <section className="relative h-screen w-full overflow-hidden">
 
         {/* BACKGROUND IMAGE SLIDER */}
+        {/* BACKGROUND IMAGE SLIDER */}
         <div className="absolute inset-0 overflow-hidden">
 
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={index}
-              src={images[index]}
-              className="absolute inset-0 w-full h-full object-cover"
+          {/* Previous Image (Layer 1) */}
+          <motion.img
+            key={`prev-${index}`}
+            src={images[(index - 1 + images.length) % images.length]}
+            className="absolute inset-0 w-full h-full object-cover"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 0 }}
+            transition={{ duration: 2, ease: [0.76, 0, 0.24, 1] }}
+          />
 
-              initial={{ opacity: 0, scale: 1.08, filter: "blur(18px)" }}
-              animate={{ opacity: 1, scale: 1.03, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+          {/* Current Image (Layer 2) */}
+          <motion.img
+            key={`current-${index}`}
+            src={images[index]}
+            className="absolute inset-0 w-full h-full object-cover"
+            initial={{ opacity: 0, scale: 1.1, x: 60 }}
+            animate={{ opacity: 1, scale: 1.02, x: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 2,
+              ease: [0.76, 0, 0.24, 1],
+            }}
+          />
 
-              transition={{ duration: 1.6, ease: "easeInOut" }}
-            />
-          </AnimatePresence>
+          {/* Depth Blur Breathing Layer */}
+          <motion.div
+            className="absolute inset-0 backdrop-blur-[3px]"
+            animate={{ opacity: [0.15, 0.35, 0.15] }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
 
+          {/* Light Sweep */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+            animate={{ x: ["-100%", "100%"] }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+
+          {/* Film Grain */}
+          <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none bg-[url('/grain.png')]" />
+
+          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/50" />
 
         </div>
 
-
         {/* YOUR ORIGINAL CONTENT */}
         <div className="relative z-10 h-full flex flex-col justify-between container mx-auto px-6 py-32">
-
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors mb-auto"
@@ -121,9 +156,8 @@ export default function ProjectDetail() {
           </Link>
 
           <div className="mb-20">
-
             <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-display font-bold leading-none mb-6"
+              className="text-2xl md:text-4xl lg:text-6xl font-display font-bold leading-none mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -139,24 +173,22 @@ export default function ProjectDetail() {
             >
               <span className="uppercase tracking-wider">{project.category}</span>
               <span>•</span>
-              <span>{project.year}</span>
+              {/* <span>{project.year}</span> */}
+              <span>Diljit Doshtan</span>
 
-              {project.workType && (
+              {/* {project.workType && (
                 <>
                   <span>•</span>
                   <span>{workTypeLabels[project.workType] || project.workType}</span>
                 </>
-              )}
+              )} */}
             </motion.div>
-
           </div>
-
         </div>
-
       </section>
 
       {/* Hero Banner with Video */}
-      <section className="relative h-screen w-full overflow-hidden">
+      {/* <section className="relative h-screen w-full overflow-hidden">
         {project.bannerVideo ? (
           <div className="absolute inset-0">
             <video
@@ -217,7 +249,7 @@ export default function ProjectDetail() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Carousel Section */}
       {project.carouselImages && project.carouselImages.length > 0 && (
@@ -341,9 +373,14 @@ export default function ProjectDetail() {
 
         <section className="container mx-auto px-6 py-20">
 
-          <h2 className="text-sm uppercase tracking-widest text-white/50 mb-12">
+          {/* <h2 className="text-sm uppercase tracking-widest text-white/50 mb-12">
             Raster Board
+          </h2> */}
+          <div className="container mx-auto mb-12">
+          <h2 className="text-4xl md:text-6xl font-display font-bold">
+             Raster Board
           </h2>
+        </div>
 
           <div className="bg-neutral-200 rounded-3xl p-6 md:p-10">
 

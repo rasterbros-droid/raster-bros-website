@@ -19,8 +19,9 @@
 
 
 :root {
-  --font-sans: 'Manrope', sans-serif;
-  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Manrope', sans-serif;   /* Small text font */
+  --font-display: 'Syne', sans-serif;   /* Large text font */
+
 
   /* Editorial Dark Theme */
   --background: 240 10% 3.9%;
