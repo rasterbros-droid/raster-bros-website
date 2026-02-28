@@ -72,7 +72,7 @@ export default function ApplicationFormModal({ isOpen, onClose }: ApplicationFor
         </div>
 
         {/* Form */}
- {/* <Link href="/" className="group flex items-center gap-2 text-white hover:text-white/70 transition-colors">
+        {/* <Link href="/" className="group flex items-center gap-2 text-white hover:text-white/70 transition-colors">
         <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         Back to Home
       </Link> */}

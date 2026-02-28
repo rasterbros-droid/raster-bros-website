@@ -20,8 +20,11 @@ export default function JoinInternship() {
       <header
         className="relative min-h-[65vh] md:min-h-[75vh] flex items-center justify-center bg-cover bg-center bg-no-repeat px-5 sm:px-8"
         style={{
+        //   backgroundImage:
+        //     "url('https://images.pexels.com/photos/7513427/pexels-photo-7513427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
+        // }}
           backgroundImage:
-            "url('https://images.pexels.com/photos/7513427/pexels-photo-7513427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
+            "url('/intership_image/intership_banner_image3.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black/75" />
@@ -40,7 +43,7 @@ export default function JoinInternship() {
 
           <div className="mt-7 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5">
             <a
-              href="/manifesto.pdf"
+              href="/pdf/RasterBros_Internship_Manifesto.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-7 py-3 border border-white/50 text-sm sm:text-base uppercase tracking-wider font-medium hover:bg-white/20 hover:shadow-lg transition-all duration-300 rounded-md transform hover:scale-105"
@@ -233,7 +236,7 @@ export default function JoinInternship() {
           </h4>
 
           <a
-            href="/parent-guide.pdf"
+            href="/pdf/RasterBros_Internship_Parent_Guide.pdf"
             download
             className="inline-block px-7 py-3 bg-orange-600 hover:bg-orange-500 text-black font-semibold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl rounded-md transform hover:scale-105"
           >
