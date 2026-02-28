@@ -24,8 +24,7 @@ export function ProjectCard({ project, index, className = "", disableAnimation =
           <img
             src={project?.imageUrl}
             alt={project?.title}
-            className="w-full h-[600px] object-fill transition-transform duration-700 ease-studio
-                         group-hover:scale-105"
+            className="w-full h-[25rem] sm:h-[600px] object-fill transition-transform duration-700 ease-studio group-hover:scale-105 rounded-lg"
           />
         </div>
 

@@ -1,5 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { Search, FileText, CheckCircle, Users, LogIn, Eye, Award, ArrowRight, ArrowDown } from "lucide-react";
+import ApplicationFormModal from "../src/components/ApplicationFormModal"; // Adjust path if needed
 
 const Navigation = dynamic(
   () => import("../src/components/Navigation").then((mod) => mod.Navigation),
@@ -7,130 +11,194 @@ const Navigation = dynamic(
 );
 
 export default function JoinInternship() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#0b0f16] text-white font-sans">
       <Navigation />
 
-      {/* Hero */}
+      {/* HERO */}
       <header
-        className="pt-28 pb-16 bg-cover bg-center relative"
+        className="relative min-h-[65vh] md:min-h-[75vh] flex items-center justify-center bg-cover bg-center bg-no-repeat px-5 sm:px-8"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&h=1200&fit=crop')",
+          backgroundImage:
+            "url('https://images.pexels.com/photos/7513427/pexels-photo-7513427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
         }}
       >
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative container mx-auto px-6 text-center">
-          <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-wide uppercase">
-            Not a classroom.
-            <br />
-            A working studio.
+        <div className="absolute inset-0 bg-black/75" />
+
+        <div className="relative z-10 text-center max-w-4xl mx-auto py-10 md:py-14">
+          <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide leading-tight drop-shadow-xl">
+            NOT A CLASSROOM. <br />
+            {/* <br className="sm:hidden" /> */}
+            A WORKING STUDIO.
           </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-sm sm:text-base text-white/80">
+
+          <p className="mt-4 sm:mt-5 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/85 font-light">
             Hands-on internships inside a professional film & entertainment studio.
             Small batches. Real exposure. Clear ethics.
           </p>
 
-          <div className="mt-8 flex justify-center gap-4 flex-wrap">
-            <a href="#manifesto" className="px-6 py-3 border border-white/20 text-white rounded-md hover:opacity-90 transition">
-              Read the manifesto
+          <div className="mt-7 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5">
+            <a
+              href="/manifesto.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-7 py-3 border border-white/50 text-sm sm:text-base uppercase tracking-wider font-medium hover:bg-white/20 hover:shadow-lg transition-all duration-300 rounded-md transform hover:scale-105"
+            >
+              Read the Manifesto
             </a>
 
-            <a
-              href="#apply"
-              className="px-6 py-3 bg-orange-500 text-black rounded-md font-semibold hover:opacity-90 transition"
+            {/* Apply Button → opens modal */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-7 py-3 bg-orange-600 hover:bg-orange-500 text-black font-semibold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl rounded-md transform hover:scale-105"
             >
-              Apply for internship
-            </a>
+              Apply for Internship
+            </button>
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-12">
-        <section id="what-this-is" className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-wide uppercase">
-            What this is
+      <main className="container mx-auto px-5 sm:px-8 lg:px-12 py-12 lg:py-16 max-w-6xl">
+        {/* WHAT THIS IS */}
+        <section className="text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-widest">
+            WHAT THIS IS
           </h2>
-          <p className="mt-4 text-white/80">
+          <p className="mt-5 text-base sm:text-lg md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto">
             Understand how real studio work happens—on set and in post-production.
+            <br className="hidden sm:block" />
             Presence, discipline, and responsibility inside a working environment.
           </p>
         </section>
 
-        <hr className="my-10 border-white/10" />
+        <div className="my-10 lg:my-14 border-t border-white/10" />
 
-        <section id="how-it-works" className="">
-          <h3 className="font-display text-xl uppercase text-center font-semibold tracking-wide">
-            How it works
-          </h3>
+        {/* HOW IT WORKS */}
+        <section className="py-10 lg:py-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-[0.08em] text-center mb-10 lg:mb-16 text-white">
+            HOW IT WORKS
+          </h2>
 
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex-1">
-              <div className="flex items-center gap-4 justify-center md:justify-start">
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-white/90">
-                    <path d="M8 6L16 12L8 18V6Z" fill="currentColor" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="uppercase text-xs text-white/60">Discover →</p>
-                </div>
-              </div>
-            </div>
+          <div className="relative max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+            {/* Desktop horizontal connecting line – now precisely aligned with icon centers */}
+            <div className="hidden md:block absolute inset-x-0 top-[45px] h-px bg-gradient-to-r from-transparent via-neutral-600/70 to-transparent pointer-events-none z-0" />
+            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-7 gap-x-4 gap-y-12 md:gap-y-0 relative z-10">
+              {[
+                { icon: Search, label: "DISCOVER" },
+                { icon: FileText, label: "APPLY" },
+                { icon: CheckCircle, label: "SELECTED" },
+                { icon: Users, label: "2–4 INTERNS" },
+                { icon: LogIn, label: "ONBOARDING" },
+                { icon: Eye, label: "STUDIO EXPOSURE" },
+                { icon: Award, label: "CERTIFICATE" },
+              ].map((step, idx) => (
+                <div
+                  key={step.label}
+                  className="flex flex-col items-center relative group"
+                >
+                  {/* Mobile vertical dashed connecting line */}
+                  {idx < 6 && (
+                    <div className="
+              md:hidden absolute inset-x-4 top-14 bottom-[-3rem]
+              border-l border-dashed border-neutral-700/50
+              pointer-events-none -z-10
+            " />
+                  )}
 
-            <div className="flex-1">
-              <div className="flex items-center gap-4 justify-center md:justify-center">
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-                </div>
-                <p className="uppercase text-xs text-white/60">Apply →</p>
-              </div>
-            </div>
+                  {/* Icon circle */}
+                  <div className={`
+            relative z-10
+            w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20
+            rounded-full
+            bg-gradient-to-b from-neutral-900 to-black
+            border border-neutral-700/70
+            flex items-center justify-center
+            shadow-[0_4px_16px_rgba(0,0,0,0.6)]
+            transition-all duration-300
+            group-hover:scale-110 group-hover:shadow-[0_12px_32px_rgba(249,115,22,0.18)]
+            group-hover:border-orange-500/50
+          `}>
+                    <step.icon
+                      className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-neutral-300 group-hover:text-orange-400 transition-colors duration-300"
+                      strokeWidth={1.6}
+                    />
+                  </div>
 
-            <div className="flex-1">
-              <div className="flex items-center gap-4 justify-center md:justify-end">
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="8" r="2" fill="currentColor" />
-                    <path d="M6 20c0-3.333 2.667-6 6-6s6 2.667 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
+                  {/* Label */}
+                  <p className="
+            mt-3 text-[10px] sm:text-xs md:text-sm
+            font-medium uppercase tracking-wider
+            text-neutral-400 group-hover:text-neutral-200
+            transition-colors duration-300 text-center leading-snug
+          ">
+                    {step.label}
+                  </p>
                 </div>
-                <p className="uppercase text-xs text-white/60">Selected →</p>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <hr className="my-10 border-white/10" />
 
-        <section id="details" className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h4 className="font-display font-semibold uppercase">This internship is for:</h4>
-            <ul className="mt-4 list-disc list-inside text-white/80 space-y-2">
-              <li>Film & media students</li>
-              <li>Curious self-taught filmmakers</li>
-              <li>Students serious about discipline</li>
+        <div className="my-10 lg:my-14 border-t border-white/10" />
+
+        {/* THIS IS FOR / NOT FOR */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 max-w-5xl mx-auto">
+          <div className="bg-white/5 backdrop-blur-sm p-7 lg:p-9 rounded-xl border border-white/10 transition-all duration-300 hover:shadow-lg hover:border-white/20">
+            <h4 className="text-xl lg:text-2xl font-semibold uppercase tracking-wide mb-5">
+              This internship is for:
+            </h4>
+            <ul className="space-y-3 text-white/80 text-base lg:text-lg">
+              <li className="flex items-start gap-3">
+                <span className="text-orange-500 text-xl mt-0.5">•</span>
+                Film & media students
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-500 text-xl mt-0.5">•</span>
+                Curious self-taught filmmakers
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-500 text-xl mt-0.5">•</span>
+                Students serious about discipline.
+              </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-display font-semibold uppercase">This is not for:</h4>
-            <ul className="mt-4 list-disc list-inside text-white/80 space-y-2">
-              <li>Guaranteed job seekers</li>
-              <li>Certificate collectors</li>
-              <li>Casual hobby interest</li>
+          <div className="bg-white/5 backdrop-blur-sm p-7 lg:p-9 rounded-xl border border-white/10 transition-all duration-300 hover:shadow-lg hover:border-white/20">
+            <h4 className="text-xl lg:text-2xl font-semibold uppercase tracking-wide mb-5">
+              This is not for:
+            </h4>
+            <ul className="space-y-3 text-white/80 text-base lg:text-lg">
+              <li className="flex items-start gap-3">
+                <span className="text-orange-500 text-xl mt-0.5">•</span>
+                Guaranteed job seekers
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-500 text-xl mt-0.5">•</span>
+                Certificate collectors
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-500 text-xl mt-0.5">•</span>
+                Casual hobby interest
+              </li>
             </ul>
           </div>
         </section>
 
-        <hr className="my-10 border-white/10" />
+        <div className="my-10 lg:my-14 border-t border-white/10" />
 
-        <section className="text-center max-w-2xl mx-auto">
-          <h4 className="font-display text-xl font-semibold uppercase">Structure</h4>
-          <p className="mt-3 text-white/80">Duration: 2–6 weeks | Batch Size: 2–4 interns per cycle</p>
+        {/* STRUCTURE */}
+        <section className="text-center max-w-4xl mx-auto">
+          <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-widest mb-6">
+            STRUCTURE
+          </h4>
 
-          <div className="mt-6 space-y-1 text-white/80">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 mb-8 font-bold">
+            Duration: 2–6 weeks &nbsp;|&nbsp; Batch Size: 2–4 interns per cycle
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-5 text-base sm:text-lg md:text-xl text-white/80">
             <p>Direction & Production</p>
             <p>Cinematography</p>
             <p>Editing & Post</p>
@@ -139,29 +207,47 @@ export default function JoinInternship() {
           </div>
         </section>
 
-        <hr className="my-10 border-white/10" />
+        <div className="my-10 lg:my-14 border-t border-white/10" />
 
-        <section className="max-w-3xl mx-auto text-center">
-          <h4 className="font-display text-xl font-semibold uppercase">Pay & Ethics</h4>
-          <p className="mt-3 text-white/80">Learning-focused internships may be unpaid. Billable work is paid. Credits provided where applicable.</p>
+        {/* PAY & ETHICS */}
+        <section className="text-center max-w-3xl mx-auto">
+          <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-widest mb-6">
+            PAY & ETHICS
+          </h4>
+
+          <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed">
+            Learning-focused internships may be unpaid.
+            <br />
+            Billable work is paid.
+            <br />
+            Credits provided where applicable.
+          </p>
         </section>
 
-        <hr className="my-10 border-white/10" />
+        <div className="my-10 lg:my-14 border-t border-white/10" />
 
+        {/* FOR PARENTS & COLLEGES */}
         <section className="text-center">
-          <h4 className="font-display text-xl font-semibold uppercase">For Parents & Colleges</h4>
-          <div className="mt-6">
-            <a
-              href="/parent-guide.pdf"
-              className="inline-block px-6 py-3 bg-orange-500 text-black rounded-md font-semibold"
-            >
-              Download parent guide (PDF)
-            </a>
-          </div>
+          <h4 className="text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-widest mb-6">
+            FOR PARENTS & COLLEGES
+          </h4>
+
+          <a
+            href="/parent-guide.pdf"
+            download
+            className="inline-block px-7 py-3 bg-orange-600 hover:bg-orange-500 text-black font-semibold text-sm sm:text-base uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl rounded-md transform hover:scale-105"
+          >
+            DOWNLOAD PARENT GUIDE (PDF)
+          </a>
         </section>
 
-        <div className="h-32" />
+        <div className="h-16 lg:h-24" />
       </main>
+      {/* Modal - shown when isModalOpen is true */}
+      <ApplicationFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }

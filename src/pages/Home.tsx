@@ -8,6 +8,7 @@ import ProjectsCarousel from "@/components/ProjectsCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
 
@@ -167,7 +168,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="relative aspect-square md:aspect-auto bg-white/5 overflow-hidden">
+          <div className="relative aspect-square md:aspect-auto bg-white/5 overflow-hidden hidden sm:block ">
             {/* abstract visual placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-purple-900/40" />
             <div className="absolute inset-0 flex items-center justify-center">
@@ -222,146 +223,92 @@ export default function Home() {
         </div>
       </footer> */}
 
-      <footer id="contact" className="bg-white text-black py-20 px-6">
-        <div className="container mx-auto">
+      <footer id="contact" className="bg-white text-black py-16 md:py-20 px-6">
+        <div className="container mx-auto max-w-7xl">
+
           {/* TOP GRID */}
-          <div className="grid md:grid-cols-3 gap-16 border-b border-black/10 pb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 border-b border-black/10 pb-12 md:pb-16">
 
             {/* LEFT — Brand */}
-            <div>
-              {/* <h2 className="text-5xl md:text-7xl font-display font-bold leading-none mb-8 tracking-tighter">
-                LET'S WORK
-                <br />
-                TOGETHER
+            <div className="min-w-0">
+              <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-6xl font-display font-bold leading-tight   tracking-tight break-words">
+                RasterBros
               </h2>
-              <a
-                href="mailto:hello@rasterbros.com"
-                className="inline-block text-xl border-b border-black/20 pb-1 hover:border-black transition-colors"
-              >
-                rasterbros@gmail.com
-              </a> */}
-              {/* <h2 className="text-3xl font-semibold mb-6">RasterBros</h2> */}
-              <h2 className="text-5xl md:text-7xl font-display font-bold leading-none mb-8 tracking-tighter">RasterBros</h2>
 
-              <p className="text-black/60 leading-relaxed max-w-md mb-6">
+              <p className="text-black/60 leading-relaxed max-w-md mt-6">
                 A creative film studio crafting cinematic stories through intent,
                 craft, and evolving workflows.
               </p>
 
-              <p className="italic text-xl text-black/80">
+              <p className="italic text-lg md:text-xl text-black/80 mt-6">
                 Turning Vision Into Pixels.
               </p>
             </div>
 
-
             {/* CENTER — Navigation */}
-            <div className="md:pl-12 border-l border-black/10">
-              <ul className="space-y-3 text-black/70">
-                <li>
-                  <a href="/" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                  >Home</a>
-                </li>
-                <li>
-                  <a href="#studio" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      const target = document.querySelector('#studio');
-                      if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >About</a>
-                </li>
-                <li>
-                  <a href="#work" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      const target = document.querySelector('#work');
-                      if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >Work</a>
-                </li>
-                <li>
-                  <a href="#services" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      const target = document.querySelector('#services');
-                      if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >Process</a>
-
-                  {/* <a href="#work" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      const target = document.querySelector('#work');
-                      if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >Work</a> */}
-                </li>
-                <li>
-                  <a href="#services" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      const target = document.querySelector('#services');
-                      if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >Services</a>
-                </li>
-                <li>
-                  <a href="#contact" className="hover:text-black transition"
-                    onClick={e => {
-                      e.preventDefault();
-                      const target = document.querySelector('#contact');
-                      if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }}>
-
-                    Contact
-                  </a>
-
-                </li>
+            <div className="lg:pl-12 lg:border-l border-black/10">
+              <ul className="space-y-3 text-black/70 text-sm md:text-base">
+                {[
+                  { label: "Home", target: "#" },
+                  { label: "About", target: "#studio" },
+                  { label: "Work", target: "#work" },
+                  { label: "Process", target: "#services" },
+                  { label: "Services", target: "#services" },
+                  { label: "Contact", target: "#contact" },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href={item.target}
+                      className="hover:text-black transition-colors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const el = document.querySelector(item.target);
+                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
-
             {/* RIGHT — CTA + Social */}
-            <div className="md:pl-12 border-l border-black/10">
-
-              <h4 className="text-xl italic mb-6 text-black/90">
+            <div className="lg:pl-12 lg:border-l border-black/10">
+              <h4 className="text-lg md:text-xl italic mb-6 text-black/90">
                 Let's Work Together
               </h4>
 
               <a
                 href="mailto:rasterbros@gmail.com"
-                className="
-            inline-block
-            px-6 py-3
-            rounded-lg
-            bg-black/10
-            hover:bg-black/20
-            transition
-            mb-8">
+                className="inline-block px-6 py-3 rounded-lg bg-black/10 hover:bg-black/20 transition mb-8 text-sm md:text-base"
+              >
                 Start a Conversation
               </a>
 
-              <div className="space-y-2 text-black/70">
-                <a href="https://www.instagram.com/rasterbros" target="_blank" className="block hover:text-black">Instagram</a>
-                <a href="https://www.youtube.com/@RasterBros" target="_blank" className="block hover:text-black">YouTube</a>
-                <a href="#" className="block hover:text-black">Vimeo</a>
-                <a href="#" className="block hover:text-black">LinkedIn</a>
+              <div className="space-y-2 text-black/70 text-sm md:text-base">
+                <a href="https://www.instagram.com/rasterbros" target="_blank" rel="noopener noreferrer" className="block hover:text-black">
+                  Instagram
+                </a>
+                <a href="https://www.youtube.com/@RasterBros" target="_blank" rel="noopener noreferrer" className="block hover:text-black">
+                  YouTube
+                </a>
+                <a href="https://www.linkedin.com/company/rasterbros/" target="_blank" rel="noopener noreferrer" className="block hover:text-black">
+                  LinkedIn
+                </a>
               </div>
 
               <p className="mt-6 text-black/40 text-sm">
                 Available worldwide
               </p>
-
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-black/10 text-sm opacity-60">
+          {/* BOTTOM */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 text-xs md:text-sm opacity-60">
             <p>&copy; RasterBros Private Limited, 2026 — All rights reserved.</p>
           </div>
+
         </div>
       </footer>
 
