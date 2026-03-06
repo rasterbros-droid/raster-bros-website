@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden bg-black">
       {/* Background Video */}
-      <div className="absolute inset-0 top-0 left-0 w-full h-full">
+      {/* <div className="absolute inset-0 top-0 left-0 w-full h-full">
         <video
           autoPlay
           loop
@@ -14,8 +14,36 @@ export function Hero() {
           className="w-full h-full object-cover"
           style={{ display: 'block' }}
         >
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="https://vimeo.com/1169470137" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 bg-black/50" />
+      </div> */}
+
+      {/* Background Vimeo Video */}
+      {/* <div className="absolute inset-0 w-full h-full overflow-hidden">
+  <iframe
+    src="https://player.vimeo.com/video/1169470137?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
+    frameBorder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    title="Background Video"
+    className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
+  /> */}
+
+      {/* Overlay */}
+      {/* <div className="absolute inset-0 bg-black/50" />
+</div> */}
+
+      <div className="absolute top-0 left-0 w-[120%] h-[120%] -translate-x-[10%] -translate-y-[10%]">
+        <iframe
+          src="https://player.vimeo.com/video/1169470137?background=1&autoplay=1&loop=1&muted=1&playsinline=1&quality=1080p"
+          className="w-full h-full object-cover"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          loading="eager"
+          style={{ position: "absolute", top: 0, left: 0 }}
+        ></iframe>
+
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
@@ -103,5 +131,6 @@ export function Hero() {
         </div>
       </motion.div>
     </section>
+
   );
 }
