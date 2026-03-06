@@ -93,6 +93,15 @@ export default function ApplicationFormModal({ isOpen, onClose }: ApplicationFor
               className="w-full px-4 py-2.5 bg-[#0f0f1a] border border-neutral-700/70 rounded-md text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-orange-600/50 transition-all"
             />
           </div>
+           <div>
+            <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-300 mb-1">
+              Phone Number
+            </label>
+            <input
+              type="number"
+              className="w-full px-4 py-2.5 bg-[#0f0f1a] border border-neutral-700/70 rounded-md text-white text-sm placeholder-neutral-600 focus:outline-none focus:border-orange-600/50 transition-all"
+            />
+          </div>
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-300 mb-1">
