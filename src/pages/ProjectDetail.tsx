@@ -377,10 +377,10 @@ export default function ProjectDetail() {
             Raster Board
           </h2> */}
           <div className="container mx-auto mb-12">
-          <h2 className="text-4xl md:text-6xl font-display font-bold">
-             Raster Board
-          </h2>
-        </div>
+            <h2 className="text-4xl md:text-6xl font-display font-bold">
+              Raster Board
+            </h2>
+          </div>
 
           <div className="bg-neutral-200 rounded-3xl p-6 md:p-10">
 
@@ -437,15 +437,7 @@ export default function ProjectDetail() {
           </div>
         </section>
 
-
-
-
-
-
       )}
-
-
-
 
       {/* Next Project CTA */}
       <section className="container mx-auto px-6 py-32 border-t border-white/10">
