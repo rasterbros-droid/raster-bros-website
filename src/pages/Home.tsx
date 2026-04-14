@@ -8,7 +8,6 @@ import LatestReleaseCarousel from "@/components/LatestReleaseCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
 
@@ -19,7 +18,10 @@ export default function Home() {
       <Hero />
 
       {/* About Section */}
-      <section id="studio" className="container mx-auto px-6 pt-32 pb-20 md:py-48">
+      <section
+        id="studio"
+        className="container mx-auto px-6 pt-32 pb-20 md:py-48"
+      >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
           <div className="md:col-span-4">
             <span className="text-sm uppercase tracking-widest text-white/50 block mb-6">
@@ -34,40 +36,28 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              {/* Raster Bros is a creative studio specializing in professional film
-              production, photography, videography, web series, and brand
-              commercials. We transform visions into cinematic reality. */}
-              RasterBros is a creative film studio built by filmmakers with over a decade of real industry
-              experience. <br />
-              We create cinematic work across films, music videos, documentaries, and commercials —
-              balancing emotion, precision, and modern workflows to deliver stories that last.
+              RasterBros is a creative film studio built by filmmakers with over
+              a decade of real industry experience. <br />
+              We create cinematic work across films, music videos,
+              documentaries, and commercials — balancing emotion, precision, and
+              modern workflows to deliver stories that last.
             </motion.p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-white/60 mb-12">
               <p>
-                {/* Our team brings years of experience in visual storytelling,
-                combining technical expertise with artistic vision. We handle
-                every aspect of production from concept to final delivery. */}
-                Every project begins with understanding the story — its purpose, tone, and audience.
-                Craft comes first. Technology supports the process, never replaces it.
+                Every project begins with understanding the story — its purpose,
+                tone, and audience. Craft comes first. Technology supports the
+                process, never replaces it.
               </p>
               <p>
-                {/* We work with brands, agencies, and creators to produce
-                high-quality content that resonates with audiences and elevates
-                your message through compelling visuals and narratives. */}
-                Our journey spans feature films, web series, OTT content, music videos, documentaries, and
-                commercial productions — created in collaboration with artists and production teams across India
-                and internationally.
+                Our journey spans feature films, web series, OTT content, music
+                videos, documentaries, and commercial productions — created in
+                collaboration with artists and production teams across India and
+                internationally.
               </p>
             </div>
-            {/* <div className="grid grid-cols-2 md:grid-cols-5 gap-6 pt-8 border-t border-white/10"> */}
             <div className="grid grid-cols-1 gap-6 pt-8 border-t border-white/10">
               {[
                 "If you value intention, collaboration, and long-term creative thinking, we’d love to hear from you.",
-                // "Movie Shooting",
-                // "Photography",
-                // "Videography",
-                // "Web Series",
-                // "Advertisements",
               ].map((service) => (
                 <motion.div
                   key={service}
@@ -135,7 +125,7 @@ export default function Home() {
           </div>
         ) : (
           <div className="container mx-auto px-0 md:px-6">
-              {/* <ProjectsCarousel projects={projects || []} /> */}
+            {/* <ProjectsCarousel projects={projects || []} /> */}
             <LatestReleaseCarousel projects={projects || []} />
           </div>
         )}
@@ -145,7 +135,7 @@ export default function Home() {
       <ImageMarquee />
 
       {/* Capabilities Section */}
-      <section className="container mx-auto px-6 py-32 border-t border-white/10" id="services">
+      {/* <section className="container mx-auto px-6 py-32 border-t border-white/10" id="services">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
           <div>
             <h3 className="text-2xl font-display mb-8">Our Services</h3>
@@ -170,12 +160,56 @@ export default function Home() {
             </ul>
           </div>
           <div className="relative aspect-square md:aspect-auto bg-white/5 overflow-hidden hidden sm:block ">
-            {/* abstract visual placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-purple-900/40" />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="font-display text-9xl text-white/5 font-bold rotate-90 md:rotate-0">
                 SERVICES
               </span>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* Capabilities Section */}
+      <section
+        className="mx-auto max-w-5xl px-6 py-20 border-t border-white/10"
+        id="services"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* LEFT CONTENT */}
+          <div>
+            <h3 className="text-2xl font-display mb-8">Our Services</h3>
+
+            <ul className="space-y-4">
+              {[
+                "Feature Movies",
+                "Music Videos",
+                "OTT Films",
+                "Branded Commercials",
+                "Web Series Production",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-center justify-between border-b border-white/10 pb-4 group cursor-default"
+                >
+                  <span className="text-xl text-white/60 group-hover:text-white transition-colors">
+                    {item}
+                  </span>
+
+                  <ArrowRight className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RIGHT VISUAL (HIDDEN ON MOBILE) */}
+          <div className="relative hidden md:flex items-center justify-end h-full">
+            <div className="relative w-full h-full rounded-lg overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1553166272-e69910ab5ae1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Film Production"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -226,10 +260,8 @@ export default function Home() {
 
       <footer id="contact" className="bg-white text-black py-16 md:py-20 px-6">
         <div className="container mx-auto max-w-7xl">
-
           {/* TOP GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 border-b border-black/10 pb-12 md:pb-16">
-
             {/* LEFT — Brand */}
             <div className="min-w-0">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-6xl font-display font-bold leading-tight   tracking-tight break-words">
@@ -237,8 +269,8 @@ export default function Home() {
               </h2>
 
               <p className="text-black/60 leading-relaxed max-w-md mt-6">
-                A creative film studio crafting cinematic stories through intent,
-                craft, and evolving workflows.
+                A creative film studio crafting cinematic stories through
+                intent, craft, and evolving workflows.
               </p>
 
               <p className="italic text-lg md:text-xl text-black/80 mt-6">
@@ -288,28 +320,42 @@ export default function Home() {
               </a>
 
               <div className="space-y-2 text-black/70 text-sm md:text-base">
-                <a href="https://www.instagram.com/rasterbros" target="_blank" rel="noopener noreferrer" className="block hover:text-black">
+                <a
+                  href="https://www.instagram.com/rasterbros"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-black"
+                >
                   Instagram
                 </a>
-                <a href="https://www.youtube.com/@RasterBros" target="_blank" rel="noopener noreferrer" className="block hover:text-black">
+                <a
+                  href="https://www.youtube.com/@RasterBros"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-black"
+                >
                   YouTube
                 </a>
-                <a href="https://www.linkedin.com/company/rasterbros/" target="_blank" rel="noopener noreferrer" className="block hover:text-black">
+                <a
+                  href="https://www.linkedin.com/company/rasterbros/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-black"
+                >
                   LinkedIn
                 </a>
               </div>
 
-              <p className="mt-6 text-black/40 text-sm">
-                Available worldwide
-              </p>
+              <p className="mt-6 text-black/40 text-sm">Available worldwide</p>
             </div>
           </div>
 
           {/* BOTTOM */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 text-xs md:text-sm opacity-60">
-            <p>&copy; RasterBros Private Limited, 2026 — All rights reserved.</p>
+            <p>
+              &copy; RasterBros Private Limited, 2026 — All rights reserved.
+            </p>
           </div>
-
         </div>
       </footer>
 
@@ -381,7 +427,6 @@ export default function Home() {
 
         </div>
       </footer> */}
-
     </div>
   );
 }

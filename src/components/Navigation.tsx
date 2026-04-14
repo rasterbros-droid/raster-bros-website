@@ -21,38 +21,28 @@ export function Navigation() {
     { name: "Work", href: "#work" },
     { name: "Studio", href: "#studio" },
     { name: "Contact", href: "#contact" },
-    { name: "Join Internship", href: "/join-internship" }
+    { name: "Join Internship", href: "/join-internship" },
   ];
 
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-          }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md border-b border-white/5"
+            : "bg-transparent"
+        }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          {/* <Link
-            href="/"
-            className="flex items-center gap-2 font-display text-xl sm:text-4xl font-bold tracking-tighter hover:opacity-70 transition-opacity bg-gradient-to-r from-white via-blue-300 to-red-500 bg-clip-text text-transparent"
-          >
-            <img
-              src="/apple-touch-icon.png"
-              alt="Website logo"
-              className="w-14 h-14 shadow-4xl"
-            />
-            <span>RasterBros</span> <br />
-            <span className="text-sm text-white">
-              PRIVATE LIMITED</span>
-          </Link> */}
-          <Link href="/" className="flex items-center gap-4">
+          {/* <Link href="/" className="flex items-center gap-4">
             <div className="h-16 flex items-center">
               <img
                 src="/apple-touch-icon.png"
                 alt="Logo"
-                className="h-16 w-auto object-contain block"
+                className="h-12 w-auto object-contain block border border-white rounded-full shadow-lg"
               />
             </div>
             <div className="flex items-center mt-3">
@@ -62,12 +52,31 @@ export function Navigation() {
                 className="h-12 w-auto object-contain block"
               />
             </div>
+          </Link> */}
+
+          <Link href="/" className="flex items-center gap-4 group">
+            <Link href="/" className="flex items-center gap-4">
+              <div className="h-16 flex items-center perspective">
+                <img
+                  src="/apple-touch-icon.png"
+                  alt="Logo"
+                  className="sm:h-12 h-8 w-auto object-contain block border border-white rounded-full shadow-lg animate-coin-flip"
+                />
+              </div>
+
+              <div className="flex items-center mt-3">
+                <img
+                  src="/Rasterbros-Title.png"
+                  alt="Title"
+                  className="sm:h-12 h-8 w-auto object-contain block"
+                />
+              </div>
+            </Link>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => {
-
               const isAnchor = link.href.startsWith("#");
 
               if (!isAnchor) {
@@ -98,10 +107,8 @@ export function Navigation() {
                   <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
                 </a>
               );
-
             })}
           </nav>
-
 
           {/* Mobile Menu Toggle */}
           <button
@@ -130,7 +137,6 @@ export function Navigation() {
             </button>
             <nav className="flex flex-col items-center gap-8">
               {navLinks.map((link) => {
-
                 const isAnchor = link.href.startsWith("#");
 
                 if (!isAnchor) {
@@ -161,10 +167,8 @@ export function Navigation() {
                     {link.name}
                   </a>
                 );
-
               })}
             </nav>
-
           </motion.div>
         )}
       </AnimatePresence>

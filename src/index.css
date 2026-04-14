@@ -125,4 +125,31 @@
       max-width: 100% !important;
     }
   } */
+
+
+/* perspective for 3D */
+.perspective {
+  perspective: 1000px;
+}
+
+/* coin flip animation */
+@keyframes coinFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  20% {
+    transform: rotateY(180deg);
+  }
+  40% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* runs every few seconds */
+.animate-coin-flip {
+  animation: coinFlip 4s ease-in-out infinite;
+}
 }
