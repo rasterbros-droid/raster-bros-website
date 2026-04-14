@@ -4,7 +4,7 @@ import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
 import ImageMarquee from "@/components/Marquee";
-import ProjectsCarousel from "@/components/ProjectsCarousel";
+import LatestReleaseCarousel from "@/components/LatestReleaseCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -135,7 +135,8 @@ export default function Home() {
           </div>
         ) : (
           <div className="container mx-auto px-0 md:px-6">
-            <ProjectsCarousel projects={projects || []} />
+              {/* <ProjectsCarousel projects={projects || []} /> */}
+            <LatestReleaseCarousel projects={projects || []} />
           </div>
         )}
       </section>

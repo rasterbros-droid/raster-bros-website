@@ -99,7 +99,7 @@
   }
 
   /* Slick Carousel Mobile Fix - Force single slide */
-  @media (max-width: 1023px) {
+  /* @media (max-width: 1023px) {
     .projects-carousel-wrapper .slick-slider {
       width: 100% !important;
       max-width: 100% !important;
@@ -124,5 +124,5 @@
       width: 100% !important;
       max-width: 100% !important;
     }
-  }
+  } */
 }
