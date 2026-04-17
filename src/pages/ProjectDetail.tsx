@@ -171,10 +171,10 @@ export default function ProjectDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="uppercase tracking-wider">{project.category}</span>
-              <span>•</span>
+              {/* <span className="uppercase tracking-wider">{project.category}</span> */}
+              {/* <span>•</span> */}
               {/* <span>{project.year}</span> */}
-              <span>Diljit Doshtan</span>
+              {/* <span>Rasterbros</span> */}
 
               {/* {project.workType && (
                 <>

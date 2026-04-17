@@ -1,58 +1,21 @@
-// Service Worker for offline support and caching
-const CACHE_NAME = 'raster-bros-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-];
+// This project runs on Next.js dev/prod chunking.
+// Old aggressive caching can serve stale JS and cause module/404 chunk errors.
+// Keep this worker as a cleanup worker that unregisters itself.
+self.addEventListener("install", () => {
+  self.skipWaiting();
+});
 
-self.addEventListener('install', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((key) => caches.delete(key)));
+      await self.clients.claim();
+      await self.registration.unregister();
+    })(),
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        return response;
-      }
-
-      return fetch(event.request).then((response) => {
-        if (!response || response.status !== 200 || response.type === 'error') {
-          return response;
-        }
-
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
-        return response;
-      }).catch(() => {
-        // Return cached response if available, otherwise return offline page
-        return caches.match(event.request);
-      });
-    })
-  );
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
+self.addEventListener("fetch", () => {
+  // Intentionally no runtime caching.
 });

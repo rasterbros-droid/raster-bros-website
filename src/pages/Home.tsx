@@ -10,6 +10,53 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
+  const servicesSectionRef = useRef<HTMLElement | null>(null);
+  const [showCameraOverlay, setShowCameraOverlay] = useState(false);
+  const [showFlash, setShowFlash] = useState(false);
+
+  useEffect(() => {
+    const section = servicesSectionRef.current;
+    if (!section) return;
+
+    let hasTriggered = false;
+    const timers: number[] = [];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry?.isIntersecting || hasTriggered) return;
+
+        hasTriggered = true;
+
+        timers.push(
+          window.setTimeout(() => {
+            setShowCameraOverlay(true);
+            setShowFlash(true);
+
+            timers.push(
+              window.setTimeout(() => {
+                setShowFlash(false);
+              }, 220),
+            );
+
+            timers.push(
+              window.setTimeout(() => {
+                setShowCameraOverlay(false);
+              }, 1200),
+            );
+          }, 2000),
+        );
+      },
+      { threshold: 0.45 },
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+      timers.forEach((timer) => window.clearTimeout(timer));
+    };
+  }, []);
 
   return (
     <div className="cursor-focus bg-background min-h-screen text-foreground selection:bg-white selection:text-black overflow-x-hidden">
@@ -20,56 +67,67 @@ export default function Home() {
       {/* About Section */}
       <section
         id="studio"
-        className="container mx-auto px-6 pt-32 pb-20 md:py-48"
+        className="container mx-auto px-6 pt-20 pb-12 md:pt-24 md:pb-16 lg:pt-32 lg:pb-20"
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-          <div className="md:col-span-4">
-            <span className="text-sm uppercase tracking-widest text-white/50 block mb-6">
-              About Raster Bros
-            </span>
-          </div>
-          <div className="md:col-span-8">
-            <motion.p
-              className="text-2xl md:text-4xl font-display font-light leading-tight mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              RasterBros is a creative film studio built by filmmakers with over
-              a decade of real industry experience. <br />
-              We create cinematic work across films, music videos,
-              documentaries, and commercials — balancing emotion, precision, and
-              modern workflows to deliver stories that last.
-            </motion.p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-white/60 mb-12">
-              <p>
-                Every project begins with understanding the story — its purpose,
-                tone, and audience. Craft comes first. Technology supports the
-                process, never replaces it.
-              </p>
-              <p>
-                Our journey spans feature films, web series, OTT content, music
-                videos, documentaries, and commercial productions — created in
-                collaboration with artists and production teams across India and
-                internationally.
-              </p>
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.09] via-white/[0.03] to-transparent p-7 md:p-12">
+          <div className="pointer-events-none absolute -top-24 -right-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
+
+          <div className="relative grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            <div className="md:col-span-4">
+              <span className="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm uppercase tracking-widest text-white/60">
+                About Raster Bros
+              </span>
             </div>
-            <div className="grid grid-cols-1 gap-6 pt-8 border-t border-white/10">
-              {[
-                "If you value intention, collaboration, and long-term creative thinking, we’d love to hear from you.",
-              ].map((service) => (
-                <motion.div
-                  key={service}
-                  className="text-sm uppercase tracking-wider text-white/50"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {service}
-                </motion.div>
-              ))}
+            <div className="md:col-span-8">
+              <motion.p
+                className="text-2xl md:text-4xl font-display font-light leading-tight mb-10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                RasterBros is a creative film studio built by filmmakers with over
+                a decade of real industry experience. <br />
+                We create cinematic work across films, music videos,
+                documentaries, and commercials — balancing emotion, precision, and
+                modern workflows to deliver stories that last.
+              </motion.p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+                <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-sm p-5">
+                  <p className="text-white/70 leading-relaxed">
+                    Every project begins with understanding the story — its purpose,
+                    tone, and audience. Craft comes first. Technology supports the
+                    process, never replaces it.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white/15 bg-black/40 backdrop-blur-sm p-5">
+                  <p className="text-white/70 leading-relaxed">
+                    Our journey spans feature films, web series, OTT content, music
+                    videos, documentaries, and commercial productions — created in
+                    collaboration with artists and production teams across India and
+                    internationally.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 pt-8 border-t border-white/10">
+                {[
+                  "If you value intention, collaboration, and long-term creative thinking, we’d love to hear from you.",
+                ].map((service) => (
+                  <motion.div
+                    key={service}
+                    className="rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-sm uppercase tracking-wider text-white/65"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {service}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -106,8 +164,8 @@ export default function Home() {
       </section> */}
 
       {/* Latest Releases - Carousel (below Selected Work) */}
-      <section id="work" className="px-6 py-20">
-        <div className="container mx-auto mb-12">
+      <section id="work" className="px-6 py-12 md:py-16 lg:py-20">
+        <div className="container mx-auto mb-8 md:mb-10 lg:mb-12">
           <h2 className="text-4xl md:text-6xl font-display font-bold">
             Latest Releases
           </h2>
@@ -172,10 +230,11 @@ export default function Home() {
 
       {/* Capabilities Section */}
       <section
-        className="mx-auto max-w-5xl px-6 py-20 border-t border-white/10"
+        className="mx-auto max-w-5xl px-6 py-12 md:py-16 lg:py-20 border-t border-white/10"
         id="services"
+        ref={servicesSectionRef}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* LEFT CONTENT */}
           <div>
             <h3 className="text-2xl font-display mb-8">Our Services</h3>
@@ -204,12 +263,27 @@ export default function Home() {
 
           {/* RIGHT VISUAL (HIDDEN ON MOBILE) */}
           <div className="relative hidden md:flex items-center justify-end h-full">
-            <div className="relative w-full h-full rounded-lg overflow-hidden">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-white/10">
               <img
-                src="https://images.unsplash.com/photo-1553166272-e69910ab5ae1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                // src="https://images.unsplash.com/photo-1553166272-e69910ab5ae1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="/service_image/service_image.jpg"
                 alt="Film Production"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fill"
               />
+
+              {showCameraOverlay && (
+                <div className="absolute inset-0 z-20 grid place-items-center bg-black/70">
+                  <img
+                    src="/camera.svg"
+                    alt="Camera click"
+                    className="h-24 w-24 animate-pulse"
+                  />
+                </div>
+              )}
+
+              {showFlash && (
+                <div className="absolute inset-0 z-30 bg-white animate-ping" />
+              )}
             </div>
           </div>
         </div>
@@ -258,10 +332,13 @@ export default function Home() {
         </div>
       </footer> */}
 
-      <footer id="contact" className="bg-white text-black py-16 md:py-20 px-6">
+      <footer
+        id="contact"
+        className="bg-white text-black py-12 md:py-16 lg:py-20 px-6"
+      >
         <div className="container mx-auto max-w-7xl">
           {/* TOP GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 border-b border-black/10 pb-12 md:pb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 border-b border-black/10 pb-10 md:pb-16">
             {/* LEFT — Brand */}
             <div className="min-w-0">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-6xl font-display font-bold leading-tight   tracking-tight break-words">

@@ -6,6 +6,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "../shared/**/*.{js,jsx,ts,tsx}",
   ],
+  
   theme: {
     extend: {
       borderRadius: {
@@ -103,10 +104,12 @@ module.exports = {
         },
       },
       animation: {
+        "spin-slow": "spin 4s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
+  
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
