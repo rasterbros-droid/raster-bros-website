@@ -372,8 +372,19 @@ export default function Home() {
                       className="hover:text-black transition-colors"
                       onClick={(e) => {
                         e.preventDefault();
-                        const el = document.querySelector(item.target);
-                        if (el) el.scrollIntoView({ behavior: "smooth" });
+                        const target = item?.target;
+
+                        if (!target || target === "#") {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                          return;
+                        }
+
+                        try {
+                          const el = document.querySelector(target);
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        } catch {
+                          // Ignore invalid CSS selectors in nav targets.
+                        }
                       }}
                     >
                       {item.label}
