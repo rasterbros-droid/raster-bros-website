@@ -266,7 +266,7 @@ export default function Home() {
             <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-white/10">
               <img
                 // src="https://images.unsplash.com/photo-1553166272-e69910ab5ae1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                src="/service_image/service_image.jpg"
+                src="/service_image/service_image1.jpeg"
                 alt="Film Production"
                 className="w-full h-full object-fill"
               />
