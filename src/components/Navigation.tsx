@@ -2,10 +2,13 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import type { MouseEvent } from "react";
+import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export function Navigation() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -18,11 +21,30 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { name: "Work", href: "#work" },
-    { name: "Studio", href: "#studio" },
-    { name: "Contact", href: "#contact" },
+    { name: "Work", href: "/#work" },
+    { name: "About Us", href: "/#studio" },
+    { name: "Contact", href: "/#contact" },
     { name: "Join Internship", href: "/join-internship" },
+    { name: "Careers", href: "/careers" },
   ];
+
+  const handleNavClick = (href: string, closeMobileMenu = false) => {
+    return (e: MouseEvent<HTMLAnchorElement>) => {
+      if (closeMobileMenu) setIsMobileMenuOpen(false);
+
+      const isSectionLink = href.startsWith("/#");
+      if (!isSectionLink) return;
+      if (router.pathname !== "/") return;
+
+      const hash = `#${href.split("#")[1]}`;
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", hash);
+    };
+  };
 
   return (
     <>
@@ -54,60 +76,37 @@ export function Navigation() {
             </div>
           </Link> */}
 
-          <Link href="/" className="flex items-center gap-4 group">
-            <Link href="/" className="flex items-center gap-4">
-              <div className="h-16 flex items-center perspective">
-                <img
-                  src="/apple-touch-icon.png"
-                  alt="Logo"
-                  className="sm:h-12 h-8 w-auto object-contain block border border-white rounded-full shadow-lg animate-coin-flip"
-                />
-              </div>
+          <Link href="/" className="flex items-center gap-4">
+            <div className="h-16 flex items-center perspective">
+              <img
+                src="/apple-touch-icon.png"
+                alt="Logo"
+                className="sm:h-12 h-8 w-auto object-contain block border border-white rounded-full shadow-lg animate-coin-flip"
+              />
+            </div>
 
-              <div className="flex items-center mt-3">
-                <img
-                  src="/Rasterbros-Title.png"
-                  alt="Title"
-                  className="sm:h-12 h-8 w-auto object-contain block"
-                />
-              </div>
-            </Link>
+            <div className="flex items-center mt-3">
+              <img
+                src="/Rasterbros-Title.png"
+                alt="Title"
+                className="sm:h-12 h-8 w-auto object-contain block"
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-12">
-            {navLinks.map((link) => {
-              const isAnchor = link.href.startsWith("#");
-
-              if (!isAnchor) {
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
-                  >
-                    {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
-                  </Link>
-                );
-              }
-
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(link.href);
-                    if (target) target.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={handleNavClick(link.href)}
+                className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -136,38 +135,16 @@ export function Navigation() {
               <X className="w-8 h-8" />
             </button>
             <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link) => {
-                const isAnchor = link.href.startsWith("#");
-
-                if (!isAnchor) {
-                  return (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="font-display text-4xl font-bold hover:text-white/50 transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                }
-
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsMobileMenuOpen(false);
-                      const target = document.querySelector(link.href);
-                      if (target) target.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    className="font-display text-4xl font-bold hover:text-white/50 transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={handleNavClick(link.href, true)}
+                  className="font-display text-4xl font-bold hover:text-white/50 transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </nav>
           </motion.div>
         )}
