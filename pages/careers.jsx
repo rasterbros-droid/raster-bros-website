@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   ArrowRight,
   Briefcase,
@@ -17,6 +18,7 @@ import AnimatedCard from "../components/AnimatedCard";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import FormInput from "../components/FormInput";
+import CareersApplicationModal from "../src/components/CareersApplicationModal";
 
 const benefits = [
   {
@@ -103,6 +105,9 @@ const teamValues = [
 ];
 
 export default function CareersPage() {
+  const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("");
+
   return (
     <>
       <Head>
@@ -239,7 +244,10 @@ export default function CareersPage() {
                 <Button
                   variant="secondary"
                   className="mt-6 w-full justify-between"
-                  onClick={() => {}}
+                  onClick={() => {
+                    setSelectedRole(role.title);
+                    setIsApplicationModalOpen(true);
+                  }}
                   type="button"
                 >
                   Apply Now
@@ -299,6 +307,15 @@ export default function CareersPage() {
             </form>
           </div>
         </SectionWrapper>
+
+        <CareersApplicationModal
+          isOpen={isApplicationModalOpen}
+          roleTitle={selectedRole}
+          onClose={() => {
+            setIsApplicationModalOpen(false);
+            setSelectedRole("");
+          }}
+        />
       </div>
     </>
   );
