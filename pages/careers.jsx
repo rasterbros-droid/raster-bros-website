@@ -121,13 +121,21 @@ export default function CareersPage() {
       <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <header className="sticky top-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-xl">
           <div className="container mx-auto flex h-20 items-center justify-between px-6">
-            <Link href="/" className="flex items-center gap-3">
-              <img
-                src="/apple-touch-icon.png"
-                alt="Raster Bros"
-                className="h-9 w-9 rounded-full border border-white/30"
-              />
-              <span className="font-display text-lg tracking-wide">Raster Bros</span>
+            <Link href="/" className="flex items-center gap-4">
+              <div className="h-16 flex items-center perspective">
+                <img
+                  src="/apple-touch-icon.png"
+                  alt="Logo"
+                  className="sm:h-12 h-8 w-auto object-contain block border border-white rounded-full shadow-lg animate-coin-flip"
+                />
+              </div>
+              <div className="flex items-center mt-3">
+                <img
+                  src="/Rasterbros-Title.png"
+                  alt="Raster Bros"
+                  className="sm:h-12 h-8 w-auto object-contain block"
+                />
+              </div>
             </Link>
             <div className="flex items-center gap-3">
               <Link

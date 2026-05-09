@@ -300,10 +300,10 @@ export default function Home() {
                 TOGETHER
               </h2>
               <a
-                href="mailto:hello@rasterbros.com"
+                href="mailto:studio@rasterbros.com"
                 className="inline-block text-xl border-b border-black/20 pb-1 hover:border-black transition-colors"
               >
-                rasterbros@gmail.com
+                studio@rasterbros.com
               </a>
             </div>
             <div className="flex flex-col justify-end items-start md:items-end">
@@ -401,7 +401,7 @@ export default function Home() {
               </h4>
 
               <a
-                href="mailto:rasterbros@gmail.com"
+                href="mailto:studio@rasterbros.com"
                 className="inline-block px-6 py-3 rounded-lg bg-black/10 hover:bg-black/20 transition mb-8 text-sm md:text-base"
               >
                 Start a Conversation
@@ -482,7 +482,7 @@ export default function Home() {
               </h4>
 
               <a
-                href="mailto:rasterbros@gmail.com"
+                href="mailto:studio@rasterbros.com"
                 className="
             inline-block
             px-6 py-3
