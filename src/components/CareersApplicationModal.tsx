@@ -8,8 +8,9 @@ interface CareersApplicationModalProps {
   roleTitle?: string;
 }
 
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwTcX8HSVbP5N38J-r9xVC9WmX8Pcu677KGyzSSjKdoa5XWa5NIZG9vdSsxaZi8tlMP/exec";
+const CAREERS_GOOGLE_SCRIPT_URL =
+  process.env.NEXT_PUBLIC_CAREERS_GOOGLE_SCRIPT_URL ||
+  "https://script.google.com/macros/s/AKfycby5vBuFakltj111eheVdNMssAGe7f0MHhetBb2ZvgIROsg9jBb3P22YtxcJ7S-BxFQ6Zw/exec";
 
 const PROGRESS_LABELS = [
   "About You",
@@ -215,7 +216,7 @@ export default function CareersApplicationModal({
         submittedAt: new Date().toISOString(),
       };
 
-      await fetch(GOOGLE_SCRIPT_URL, {
+      await fetch(CAREERS_GOOGLE_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload),

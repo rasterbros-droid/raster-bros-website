@@ -4,7 +4,7 @@ export default function CameraCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
-  /* ---------------- Mouse follow effect --------------- */
+  /* ---------------- Mouse follow effect -̋-------------- */
   useEffect(() => {
     let mouseX = 0;
     let mouseY = 0;
