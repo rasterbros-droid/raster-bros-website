@@ -152,4 +152,42 @@
 .animate-coin-flip {
   animation: coinFlip 4s ease-in-out infinite;
 }
+
+@keyframes rasterOrbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.raster-orbit {
+  animation: rasterOrbitSpin 46s linear infinite;
+}
+
+.raster-orbit:hover {
+  animation-play-state: paused;
+}
+
+.raster-orbit-upright {
+  animation: rasterOrbitCounterSpin 46s linear infinite;
+}
+
+.raster-orbit:hover .raster-orbit-upright {
+  animation-play-state: paused;
+}
+
+@keyframes rasterOrbitCounterSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.raster-orbit-card {
+  border-radius: 28px;
+}
 }

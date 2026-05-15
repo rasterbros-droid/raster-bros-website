@@ -14,7 +14,8 @@ export const ProjectSchema = z.object({
   bannerVideo: z.string().nullable(),
   carouselImages: z.array(z.string()),
   galleryImages: z.array(z.string()),
-  embeddedVideo: z.string().nullable(),
+  embeddedVideoSong: z.string().nullable(),
+  embeddedVideoBTS: z.string().nullable(),
 });
 
 export type Project = z.infer<typeof ProjectSchema>;
