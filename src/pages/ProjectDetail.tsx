@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-
+import FlyingPosters from "@/components/FlyingPosters";
 
 export default function ProjectDetail() {
   const [, params] = useRoute("/project/:slug");
@@ -81,6 +81,15 @@ export default function ProjectDetail() {
   };
   const featuredFrames = project?.galleryImages?.slice(0, 12) || [];
   const orbitFrames = featuredFrames.slice(0, 12);
+  const localPosterItems =
+    project?.galleryImages?.filter((src) => src.startsWith("/")) ?? [];
+  const posterItems = localPosterItems.length
+    ? localPosterItems
+    : [
+        "/artist_images/1.jpg",
+        "/artist_images/2.jpg",
+        "/artist_images/3.jpg",
+      ];
   const getYoutubeEmbedUrl = (url: string) => {
     if (url.includes("youtube.com/embed/")) return url;
 
@@ -580,6 +589,9 @@ export default function ProjectDetail() {
         </section>
       )}
 
+    {/* <div style={{ height: '100vh' }}>
+      <FlyingPosters items={posterItems} />
+    </div> */}
 
       {/* Next Project CTA */}
       <section className="container mx-auto px-6 py-32 border-t border-white/10">

@@ -7,13 +7,85 @@ import { ProjectCard } from "@/components/ProjectCard";
 import ImageMarquee from "@/components/Marquee";
 import LatestReleaseCarousel from "@/components/LatestReleaseCarousel";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
   const servicesSectionRef = useRef<HTMLElement | null>(null);
   const [showCameraOverlay, setShowCameraOverlay] = useState(false);
   const [showFlash, setShowFlash] = useState(false);
+  const testimonials = [
+    {
+      name: "Aarav Singh",
+      role: "Playback Artist",
+      image: "/artist_images/1.jpg",
+      quote:
+        "RasterBros made every frame feel cinematic. Their team understood the emotion of the song from day one.",
+    },
+    {
+      name: "Meher Kaur",
+      role: "Independent Singer",
+      image: "/artist_images/2.jpg",
+      quote:
+        "From concept to final cut, the process was smooth, respectful, and creatively sharp. Truly artist-first.",
+    },
+    {
+      name: "Kabir Malhotra",
+      role: "Film Actor",
+      image: "/artist_images/3.jpg",
+      quote:
+        "Professional set culture, clear communication, and incredible visuals. Working with RasterBros felt premium.",
+    },
+    {
+      name: "Simran Ahuja",
+      role: "Music Composer",
+      image: "/artist_images/4.jpg",
+      quote:
+        "They translated sound into visual poetry. Every detail in the final film reflected thought and craft.",
+    },
+    {
+      name: "Devansh Thakur",
+      role: "Director",
+      image: "/artist_images/5.jpg",
+      quote:
+        "Their understanding of pacing, mood, and storytelling helped us create a project we are genuinely proud of.",
+    },
+    {
+      name: "Naina Oberoi",
+      role: "Vocalist",
+      image: "/artist_images/6.jpg",
+      quote:
+        "RasterBros gave me complete confidence on camera. The team was prepared, supportive, and creatively fearless.",
+    },
+    {
+      name: "Reyansh Gill",
+      role: "Music Producer",
+      image: "/artist_images/7.jpg",
+      quote:
+        "The edit quality, transitions, and treatment were world-class. They elevated our track to another level.",
+    },
+    {
+      name: "Ira Bhardwaj",
+      role: "Performing Artist",
+      image: "/artist_images/8.jpg",
+      quote:
+        "I loved how collaborative the shoot felt. They listened, adapted fast, and delivered beyond expectations.",
+    },
+    {
+      name: "Armaan Verma",
+      role: "Screenwriter",
+      image: "/artist_images/9.jpg",
+      quote:
+        "Rare to find a crew that combines discipline with artistic instinct. RasterBros brought both in full force.",
+    },
+    {
+      name: "Tanya Sethi",
+      role: "Creative Producer",
+      image: "/artist_images/10.jpg",
+      quote:
+        "If you care about storytelling and execution equally, this is the team to build with. Highly recommended.",
+    },
+  ];
 
   useEffect(() => {
     const section = servicesSectionRef.current;
@@ -241,7 +313,7 @@ export default function Home() {
         </div>
       </section> */}
 
-      {/* Capabilities Section */}
+      {/* Our Services Section */}
       <section
         className="mx-auto max-w-5xl px-6 py-12 md:py-16 lg:py-20 border-t border-white/10"
         id="services"
@@ -278,7 +350,6 @@ export default function Home() {
           <div className="relative hidden md:flex items-center justify-end h-full">
             <div className="relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-white/10">
               <img
-                // src="https://images.unsplash.com/photo-1553166272-e69910ab5ae1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 src="/service_image/service_image1.jpeg"
                 alt="Film Production"
                 className="w-full h-full object-fill"
@@ -298,6 +369,64 @@ export default function Home() {
                 <div className="absolute inset-0 z-30 bg-white animate-ping" />
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      
+{/* Review Section */}
+      <section className="px-6 py-12 md:py-16 lg:py-20 border-t border-white/10 bg-gradient-to-b from-transparent via-white/[0.03] to-transparent">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-10 md:mb-12 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-white/70">
+                Artists Review
+              </p>
+              <h3 className="text-3xl md:text-5xl font-display font-bold mt-3 text-white">
+                Voices From Our Collaborators
+              </h3>
+            </div>
+            <p className="max-w-xl text-sm md:text-base text-white/80 leading-relaxed">
+              Real experiences from artists who partnered with RasterBros across
+              films, music videos, and commercial stories.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {testimonials.map((testimonial, index) => (
+              <motion.article
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.45, delay: index * 0.04 }}
+                className="group rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.16] via-white/[0.08] to-white/[0.03] p-5 md:p-6 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:border-white/40 hover:from-white/[0.2] transition-colors"
+              >
+                <div className="mb-4 flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="h-12 w-12 rounded-full object-cover ring-1 ring-white/25"
+                      loading="lazy"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-white leading-tight">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-xs uppercase tracking-wider text-white/70 mt-1">
+                        {testimonial.role}
+                      </p>
+                    </div>
+                  </div>
+                  <Quote className="h-5 w-5 text-white/60 group-hover:text-white transition-colors" />
+                </div>
+
+                <p className="text-sm md:text-base text-white/90 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
