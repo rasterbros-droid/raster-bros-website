@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import Head from "next/head";
 import { useProjects } from "@/hooks/use-projects";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
@@ -59,8 +60,20 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="cursor-focus bg-background min-h-screen text-foreground selection:bg-white selection:text-black overflow-x-hidden">
-      <Navigation />
+    <>
+      <Head>
+        <title>RasterBros - Turning Vision Into Pixels</title>
+        <meta
+          name="description"
+          content="A creative film studio crafting cinematic stories through craft, technology, and intent."
+        />
+        <link rel="preconnect" href="https://player.vimeo.com" />
+        <link rel="preconnect" href="https://i.vimeocdn.com" />
+        <link rel="preconnect" href="https://f.vimeocdn.com" />
+      </Head>
+
+      <div className="cursor-focus bg-background min-h-screen text-foreground selection:bg-white selection:text-black overflow-x-hidden">
+        <Navigation />
 
       <Hero />
 
@@ -515,6 +528,7 @@ export default function Home() {
 
         </div>
       </footer> */}
-    </div>
+      </div>
+    </>
   );
 }

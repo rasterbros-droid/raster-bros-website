@@ -38,7 +38,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Raster Bros</title>
+        <title>RasterBros - Turning Vision Into Pixels</title>
+        <meta
+          name="description"
+          content="A creative film studio crafting cinematic stories through craft, technology, and intent."
+        />
       </Head>
       {/* <CustomCursor /> */}
       <Component {...pageProps} />

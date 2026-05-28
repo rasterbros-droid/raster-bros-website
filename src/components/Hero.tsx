@@ -14,7 +14,7 @@ export function Hero() {
           className="w-full h-full object-cover"
           style={{ display: 'block' }}
         >
-          <source src="https://vimeo.com/1169470137" type="video/mp4" />
+             <source src="https://vimeo.com/1169470137" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/50" />
       </div> */}
@@ -22,7 +22,7 @@ export function Hero() {
       {/* Background Vimeo Video */}
       {/* <div className="absolute inset-0 w-full h-full overflow-hidden">
   <iframe
-    src="https://player.vimeo.com/video/1169470137?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
+   src="https://player.vimeo.com/video/1169470137?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
     frameBorder="0"
     allow="autoplay; fullscreen; picture-in-picture"
     title="Background Video"
@@ -51,7 +51,7 @@ export function Hero() {
 <div className="absolute inset-0 w-full h-full overflow-hidden">
 
 <iframe
-  src="https://player.vimeo.com/video/1169470137?background=1&autoplay=1&loop=1&muted=1&playsinline=1&quality=1080p"
+  src="https://player.vimeo.com/video/1195153535?background=1&autoplay=1&loop=1&muted=1&playsinline=1&autopause=0&dnt=1"
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
   allowFullScreen
