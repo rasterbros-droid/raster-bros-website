@@ -5,8 +5,9 @@ import { ArrowLeft, Paperclip } from "lucide-react";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import FlyingPosters from "@/components/FlyingPosters";
+import { resolveYoutubeEmbedUrl } from "@/lib/youtube";
 
 export default function ProjectDetail() {
   const [, params] = useRoute("/project/:slug");
@@ -15,35 +16,43 @@ export default function ProjectDetail() {
 
   // Scroll to top when project loads or slug changes
   // useEffect(() => {
-  //   // Use a small timeout to ensure the DOM has settled
   //   const timer = setTimeout(() => {
   //     window.scrollTo(0, 0);
   //     document.documentElement.scrollTop = 0;
   //     document.body.scrollTop = 0;
   //   }, 0);
-
   //   return () => clearTimeout(timer);
   // }, [slug]);
 
-  const images = [
-    "/artist_images/1.jpg",
-    "/artist_images/2.jpg",
-    "/artist_images/3.jpg",
-    "/artist_images/4.jpg",
-    "/artist_images/5.jpg",
-  ];
-
   const [index, setIndex] = useState(0);
 
+  const heroImages = useMemo(() => {
+    if (!project) return [];
+    if (project.carouselImages?.length) return project.carouselImages;
+    if (project.galleryImages?.length) return project.galleryImages.slice(0, 5);
+    return [project.imageUrl];
+  }, [project]);
+
+  const songVideoEmbedUrl = useMemo(
+    () => resolveYoutubeEmbedUrl(project?.embeddedVideoSong),
+    [project?.embeddedVideoSong],
+  );
+  const btsVideoEmbedUrl = useMemo(
+    () => resolveYoutubeEmbedUrl(project?.embeddedVideoBTS),
+    [project?.embeddedVideoBTS],
+  );
+
   useEffect(() => {
+    setIndex(0);
+  }, [slug]);
+
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 4000); // slower, smoother hero transitions
-
+      setIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
     return () => clearInterval(timer);
-  }, []);
-
-
+  }, [heroImages]);
 
   if (isLoading) {
     return (
@@ -79,64 +88,9 @@ export default function ProjectDetail() {
     "web-series": "Web Series Production",
     advertisement: "Brand Commercial",
   };
-  const featuredFrames = project?.galleryImages?.slice(0, 12) || [];
+
+  const featuredFrames = project.galleryImages?.slice(0, 12) || [];
   const orbitFrames = featuredFrames.slice(0, 12);
-  const localPosterItems =
-    project?.galleryImages?.filter((src) => src.startsWith("/")) ?? [];
-  const posterItems = localPosterItems.length
-    ? localPosterItems
-    : [
-        "/artist_images/1.jpg",
-        "/artist_images/2.jpg",
-        "/artist_images/3.jpg",
-      ];
-  const getYoutubeEmbedUrl = (url: string) => {
-    if (url.includes("youtube.com/embed/")) return url;
-
-    try {
-      const parsed = new URL(url);
-      const host = parsed.hostname.replace("www.", "");
-
-      if (host === "youtu.be") {
-        const videoId = parsed.pathname.replace("/", "");
-        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
-      }
-
-      if (host === "youtube.com") {
-        if (parsed.pathname === "/watch") {
-          const videoId = parsed.searchParams.get("v");
-          return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
-        }
-
-        if (parsed.pathname.startsWith("/shorts/")) {
-          const videoId = parsed.pathname.split("/")[2];
-          return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
-        }
-      }
-    } catch {
-      return url;
-    }
-
-    return url;
-  };
-  const isIframeEmbedCode = (value: string) =>
-    value.trim().toLowerCase().startsWith("<iframe");
-  const extractIframeSrc = (value: string) => {
-    const match = value.match(/src=["']([^"']+)["']/i);
-    return match?.[1] ?? null;
-  };
-  const resolveVideoInput = (value: string) => {
-    if (isIframeEmbedCode(value)) return extractIframeSrc(value) ?? value;
-    return value;
-  };
-  const isYoutubeLink = (url: string) =>
-    url.includes("youtube.com") || url.includes("youtu.be");
-  const songVideo = project?.embeddedVideoSong
-    ? resolveVideoInput(project.embeddedVideoSong)
-    : null;
-  const btsVideo = project?.embeddedVideoBTS
-    ? resolveVideoInput(project.embeddedVideoBTS)
-    : null;
 
   return (
     <div className="bg-background min-h-screen text-foreground">
@@ -146,9 +100,10 @@ export default function ProjectDetail() {
       <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <AnimatePresence mode="sync">
-            <motion.img
-              key={images[index]}
-              src={images[index]}
+            {heroImages.length > 0 && (
+              <motion.img
+                key={heroImages[index]}
+                src={heroImages[index]}
               className="absolute inset-0 w-full h-full object-cover"
               initial={{ opacity: 0, scale: 1.08, filter: "blur(10px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -159,6 +114,7 @@ export default function ProjectDetail() {
                 filter: { duration: 0.9, ease: "easeOut" },
               }}
             />
+            )}
           </AnimatePresence>
 
           <motion.div
@@ -169,11 +125,9 @@ export default function ProjectDetail() {
 
           {/* Film Grain */}
           <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none bg-[url('/grain.png')]" />
-
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.07),transparent_30%),radial-gradient(circle_at_80%_80%,rgba(255,220,170,0.07),transparent_28%)]" />
         </div>
 
-        {/* YOUR ORIGINAL CONTENT */}
         <div className="relative z-10 h-full flex flex-col justify-between container mx-auto px-6 py-32">
           <Link
             href="/"
@@ -203,7 +157,6 @@ export default function ProjectDetail() {
               {/* <span>•</span> */}
               {/* <span>{project.year}</span> */}
               {/* <span>Rasterbros</span> */}
-
               {/* {project.workType && (
                 <>
                   <span>•</span>
@@ -217,127 +170,36 @@ export default function ProjectDetail() {
 
       {/* Hero Banner with Video */}
       {/* <section className="relative h-screen w-full overflow-hidden">
-        {project.bannerVideo ? (
-          <div className="absolute inset-0">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src={project.bannerVideo} type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-black/40" />
-          </div>
-        ) : (
-          <div className="absolute inset-0">
-            <img
-              src={project.imageUrl}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        )}
-
-        <div className="relative z-10 h-full flex flex-col justify-between container mx-auto px-6 py-32">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors mb-auto"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span>Back to Work</span>
-          </Link>
-
-          <div className="mb-20">
-            <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-display font-bold leading-none mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {project.title}
-            </motion.h1>
-            <motion.div
-              className="flex flex-wrap gap-4 text-white/60"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span className="uppercase tracking-wider">{project.category}</span>
-              <span>•</span>
-              <span>{project.year}</span>
-              {project.workType && (
-                <>
-                  <span>•</span>
-                  <span>{workTypeLabels[project.workType] || project.workType}</span>
-                </>
-              )}
-            </motion.div>
-          </div>
-        </div>
+        ...
       </section> */}
 
       {/* Song Video */}
-      {songVideo && (
+      {songVideoEmbedUrl && (
         <section className="container mx-auto px-6 py-20">
           <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">Song Video</h2>
           <motion.div
-            className="aspect-video bg-black rounded-sm overflow-hidden relative group"
+            className="aspect-video bg-black rounded-sm overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {isYoutubeLink(songVideo) ? (
-              <iframe
-                src={getYoutubeEmbedUrl(songVideo)}
-                title={`${project.title} song video`}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            ) : (
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-                poster={project.imageUrl}
-              >
-                <source src={songVideo} type="video/mp4" />
-              </video>
-            )}
+            <iframe
+              src={songVideoEmbedUrl}
+              title={`${project.title} song video`}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </motion.div>
         </section>
       )}
 
-
       {/* Carousel Section */}
       {/* {project.carouselImages && project.carouselImages.length > 0 && (
         <section className="py-20 bg-white/5">
-          <div className="container mx-auto px-6 relative">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {project.carouselImages.map((image, index) => (
-                  <CarouselItem key={index} className="basis-full">
-                    <div className="aspect-video overflow-hidden rounded-sm">
-                      <img
-                        src={image}
-                        alt={`${project.title} - Image ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-2 md:left-4 text-white border-white/20 hover:border-white/40" />
-              <CarouselNext className="right-2 md:right-4 text-white border-white/20 hover:border-white/40" />
-            </Carousel>
-          </div>
+          ...
         </section>
       )} */}
 
@@ -388,42 +250,29 @@ export default function ProjectDetail() {
       </section>
 
       {/* BTS Video */}
-      {btsVideo && (
+      {btsVideoEmbedUrl && (
         <section className="container mx-auto px-6 py-20">
           <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">BTS Video</h2>
           <motion.div
-            className="aspect-video bg-black rounded-sm overflow-hidden relative group"
+            className="aspect-video bg-black rounded-sm overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {isYoutubeLink(btsVideo) ? (
-              <iframe
-                src={getYoutubeEmbedUrl(btsVideo)}
-                title={`${project.title} bts video`}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
-            ) : (
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-                poster={project.imageUrl}
-              >
-                <source src={btsVideo} type="video/mp4" />
-              </video>
-            )}
+            <iframe
+              src={btsVideoEmbedUrl}
+              title={`${project.title} bts video`}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </motion.div>
         </section>
       )}
 
-      {/* Gallery Section */}
+      {/* Gallery Section (grid layout - commented out) */}
       {/* {project.galleryImages && project.galleryImages.length > 0 && (
         <section className="container mx-auto px-6 py-20">
           <h2 className="text-sm uppercase tracking-widest text-white/50 mb-12">Gallery</h2>
@@ -449,6 +298,7 @@ export default function ProjectDetail() {
         </section>
       )} */}
 
+      {/* Raster Board Gallery */}
       {project.galleryImages && project.galleryImages.length > 0 && (
         <section className="container mx-auto px-6 py-20">
           <motion.div
@@ -483,6 +333,7 @@ export default function ProjectDetail() {
           <div className="relative overflow-hidden rounded-[28px] border border-black/10 bg-[#ececec] p-4 sm:p-5 md:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.2)]">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(255,255,255,0.7),transparent_34%),radial-gradient(circle_at_85%_80%,rgba(255,255,255,0.55),transparent_30%)]" />
 
+            {/* Desktop orbit layout */}
             <div className="relative hidden md:block h-[820px] lg:h-[900px]">
               <div className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/10" />
               <div className="pointer-events-none absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/5" />
@@ -533,6 +384,7 @@ export default function ProjectDetail() {
               </div>
             </div>
 
+            {/* Mobile layout */}
             <div className="relative md:hidden space-y-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -589,9 +441,10 @@ export default function ProjectDetail() {
         </section>
       )}
 
-    {/* <div style={{ height: '100vh' }}>
-      <FlyingPosters items={posterItems} />
-    </div> */}
+      {/* Flying Posters (unused) */}
+      {/* <div style={{ height: '100vh' }}>
+        <FlyingPosters items={posterItems} />
+      </div> */}
 
       {/* Next Project CTA */}
       <section className="container mx-auto px-6 py-32 border-t border-white/10">
@@ -615,76 +468,43 @@ export default function ProjectDetail() {
 }
 
 
-
-
-// raster board
-
+// ─── Raster board grid layout (alternative - commented out) ──────────────────
 // {project.galleryImages && project.galleryImages.length > 0 && (
-
-//         <section className="container mx-auto px-6 py-20">
-
-//           {/* <h2 className="text-sm uppercase tracking-widest text-white/50 mb-12">
-//             Raster Board
-//           </h2> */}
-//           <div className="container mx-auto mb-12">
-//             <h2 className="text-4xl md:text-6xl font-display font-bold">
-//               Raster Board
-//             </h2>
-//           </div>
-
-//           <div className="bg-neutral-200 rounded-3xl p-6 md:p-10">
-
-//             <div className="hidden md:grid grid-cols-12 auto-rows-[110px] gap-4">
-
-//               {project.galleryImages?.slice(0, 12).map((img, i) => {
-
-//                 const layout = [
-
-//                   "col-span-4 row-span-2",   // top left wide
-//                   "col-span-4 row-span-2",   // top middle wide
-//                   "col-span-3 row-span-2",   // top right medium
-//                   "col-span-1 row-span-4",   // tall thin right
-
-//                   "col-span-2 row-span-1",   // small cinematic
-//                   "col-span-2 row-span-1",   // small cinematic
-
-//                   "col-span-4 row-span-4",   // BIG CENTER HERO (groom image)
-
-//                   "col-span-3 row-span-2",
-//                   "col-span-3 row-span-2",
-
-//                   "col-span-2 row-span-3",
-
-//                   "col-span-1 row-span-2",
-
-//                   "col-span-3 row-span-2"
-//                 ];
-
-//                 return (
-//                   <div key={i} className={`${layout[i]} overflow-hidden rounded-xl group`}>
-
-//                     <img
-//                       src={img}
-//                       className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-//                     />
-
-//                   </div>
-//                 );
-
-//               })}
-
+//   <section className="container mx-auto px-6 py-20">
+//     <div className="container mx-auto mb-12">
+//       <h2 className="text-4xl md:text-6xl font-display font-bold">Raster Board</h2>
+//     </div>
+//     <div className="bg-neutral-200 rounded-3xl p-6 md:p-10">
+//       <div className="hidden md:grid grid-cols-12 auto-rows-[110px] gap-4">
+//         {project.galleryImages?.slice(0, 12).map((img, i) => {
+//           const layout = [
+//             "col-span-4 row-span-2",
+//             "col-span-4 row-span-2",
+//             "col-span-3 row-span-2",
+//             "col-span-1 row-span-4",
+//             "col-span-2 row-span-1",
+//             "col-span-2 row-span-1",
+//             "col-span-4 row-span-4",
+//             "col-span-3 row-span-2",
+//             "col-span-3 row-span-2",
+//             "col-span-2 row-span-3",
+//             "col-span-1 row-span-2",
+//             "col-span-3 row-span-2",
+//           ];
+//           return (
+//             <div key={i} className={`${layout[i]} overflow-hidden rounded-xl group`}>
+//               <img src={img} className="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
 //             </div>
-
-//             {/* MOBILE VERSION → stacked cinematic */}
-//             <div className="grid md:hidden grid-cols-2 gap-3">
-//               {project.galleryImages?.map((img, i) => (
-//                 <div key={i} className="aspect-[4/5] overflow-hidden rounded-xl">
-//                   <img src={img} className="w-full h-full object-cover" />
-//                 </div>
-//               ))}
-//             </div>
-
+//           );
+//         })}
+//       </div>
+//       <div className="grid md:hidden grid-cols-2 gap-3">
+//         {project.galleryImages?.map((img, i) => (
+//           <div key={i} className="aspect-[4/5] overflow-hidden rounded-xl">
+//             <img src={img} className="w-full h-full object-cover" />
 //           </div>
-//         </section>
-
-//       )}
+//         ))}
+//       </div>
+//     </div>
+//   </section>
+// )}

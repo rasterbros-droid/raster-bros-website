@@ -2,10 +2,7 @@ import type { InsertProject } from "../src/lib/schema";
 
 // Raster Bros Projects Data
 // Easy to update - just add new objects to this array
-const DUMMY_SONG_VIDEO =
-  '<iframe width="560" height="315" src="https://www.youtube.com/embed/es4gXbPKAGg?si=Tbf676Kvet1zaow2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-const DUMMY_BTS_VIDEO =
-  '<iframe width="560" height="315" src="https://www.youtube.com/embed/JGwWNGJdvx8?si=y6TQf8-k9nWQw7vX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+// Video fields accept: YouTube video ID, full YouTube URL, or iframe embed HTML
 
 export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   // {
@@ -67,8 +64,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
       "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
     ],
-    embeddedVideoSong: DUMMY_SONG_VIDEO,
-    embeddedVideoBTS: DUMMY_BTS_VIDEO,
+    embeddedVideoSong: "hxN7hkUsP6E?si=mhiPVJgXoKepFzXF",
+    embeddedVideoBTS: "es4gXbPKAGg?si=Kx-A2xNe2ayXetqg",
   },
   //  {
   //   title: "Tere Vangu - Nirvair Pannu",
@@ -137,8 +134,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
       "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
     ],
-    embeddedVideoSong: DUMMY_SONG_VIDEO,
-    embeddedVideoBTS: DUMMY_BTS_VIDEO,
+    embeddedVideoSong: "TuCTTCu0Rvg?si=QlOF5c3zYuo9ZOs9",
+    embeddedVideoBTS: "MGbZjux4fTU?si=hfwjSEDVUv_7wfah",
   },
   // {
   //   title: "Beyond The Skies - AAKAA",
@@ -262,8 +259,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
       "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
     ],
-    embeddedVideoSong: DUMMY_SONG_VIDEO,
-    embeddedVideoBTS: DUMMY_BTS_VIDEO,
+    embeddedVideoSong: "6oiaqcRHMig?si=aRhqjxB2EbUiCI9K",
+    embeddedVideoBTS: "6oiaqcRHMig?si=aRhqjxB2EbUiCI9K",
   },
 
   {
@@ -300,8 +297,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
       "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
     ],
-    embeddedVideoSong: DUMMY_SONG_VIDEO,
-    embeddedVideoBTS: DUMMY_BTS_VIDEO,
+    embeddedVideoSong: "iTflRbeYjEQ?si=mj52lZdhZN9UK-dB",
+    embeddedVideoBTS: "lEbZ7TeSjt4?si=178BuY4F6FIKMIEI",
   },
   // {
   //   title: "Recce Day - RasterBros",
@@ -369,8 +366,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
       "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
     ],
-    embeddedVideoSong: DUMMY_SONG_VIDEO,
-    embeddedVideoBTS: DUMMY_BTS_VIDEO,
+    embeddedVideoSong: "T7kL3DBYESU?si=NIruDZc131X0v1se",
+    embeddedVideoBTS: "T7kL3DBYESU?si=NIruDZc131X0v1se",
   },
   // {
   //   title: "Wedding Photography Collection",
