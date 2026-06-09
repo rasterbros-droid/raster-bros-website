@@ -270,10 +270,10 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     workType: "song",
     bannerVideo: null,
     carouselImages: [
-      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Project%20Background%20Slider%20-%201600x900%20px/Webp/1.webp",
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Project%20Background%20Slider%20-%201600x900%20px/Webp/2.webp",
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Project%20Background%20Slider%20-%201600x900%20px/Webp/3.webp",
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Project%20Background%20Slider%20-%201600x900%20px/Webp/4.webp",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Project%20Background%20Slider%20-%201600x900%20px/Webp/1.webp",
     ],
     galleryImages: [
       "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop",
