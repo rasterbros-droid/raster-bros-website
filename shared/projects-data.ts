@@ -142,7 +142,7 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   },
   {
     title: "Kirpaan - Manjit Singh Sohi",
-    category: "Movie",
+    category: "Song",
     description:
       "Complete video coverage of a major fashion week event, capturing runway shows and behind-the-scenes moments.",
     detailedDescription:
