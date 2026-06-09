@@ -20,11 +20,8 @@ export default function JoinInternship() {
       <header
         className="relative min-h-[65vh] md:min-h-[75vh] flex items-center justify-center bg-cover bg-center bg-no-repeat px-5 sm:px-8"
         style={{
-        //   backgroundImage:
-        //     "url('https://images.pexels.com/photos/7513427/pexels-photo-7513427.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
-        // }}
           backgroundImage:
-            "url('/intership_image/intership_banner_image3.webp')",
+            "url('https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Internship-System/Background%20Images/Webp/1.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black/75" />
@@ -32,7 +29,6 @@ export default function JoinInternship() {
         <div className="relative z-10 text-center max-w-4xl mx-auto py-10 md:py-14">
           <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide leading-tight drop-shadow-xl">
             NOT A CLASSROOM. <br />
-            {/* <br className="sm:hidden" /> */}
             A WORKING STUDIO.
           </h1>
 

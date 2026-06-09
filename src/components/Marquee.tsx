@@ -3,21 +3,21 @@ import { motion } from "framer-motion";
 export default function ImageMarquee() {
 
   const images = [
-    "/artist_images/1.jpg",
-    "/artist_images/2.jpg",
-    "/artist_images/3.jpg",
-    "/artist_images/4.jpg",
-    "/artist_images/5.jpg",
-    "/artist_images/6.jpg",
-    "/artist_images/7.jpg",
-    "/artist_images/8.jpg",
-    "/artist_images/9.jpg",
-    "/artist_images/10.jpg",
-    "/artist_images/11.jpg",
-    "/artist_images/12.jpg",
-    "/artist_images/13.jpg",
-    "/artist_images/14.jpg",
-  ];
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/1.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/2.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/3.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/4.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/5.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/6.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/7.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/8.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/9.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/10.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/11.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/12.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/13.jpg",
+  "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/14.jpg"
+];
 
   // duplicate → seamless infinite scroll
   const loopImages = [...images, ...images];

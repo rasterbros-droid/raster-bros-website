@@ -59,27 +59,10 @@ export function Navigation() {
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-          {/* <Link href="/" className="flex items-center gap-4">
-            <div className="h-16 flex items-center">
-              <img
-                src="/apple-touch-icon.png"
-                alt="Logo"
-                className="h-12 w-auto object-contain block border border-white rounded-full shadow-lg"
-              />
-            </div>
-            <div className="flex items-center mt-3">
-              <img
-                src="/Rasterbros-Title.png"
-                alt="Title"
-                className="h-12 w-auto object-contain block"
-              />
-            </div>
-          </Link> */}
-
           <Link href="/" className="flex items-center gap-4">
             <div className="h-16 flex items-center perspective">
               <img
-                src="/apple-touch-icon.png"
+                src="https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Website-Brand-Graphics/LOGO/Rasterbros%20Logo%20Round%20Transparent.png"
                 alt="Logo"
                 className="sm:h-12 h-8 w-auto object-contain block border border-white rounded-full shadow-lg animate-coin-flip"
               />
@@ -87,7 +70,7 @@ export function Navigation() {
 
             <div className="flex items-center mt-3">
               <img
-                src="/Rasterbros-Title.png"
+                src="https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Website-Brand-Graphics/LOGO/Rasterbros%20Title.png"
                 alt="Title"
                 className="sm:h-12 h-8 w-auto object-contain block"
               />
