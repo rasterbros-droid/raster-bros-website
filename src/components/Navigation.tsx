@@ -9,16 +9,16 @@ import { Menu, X } from "lucide-react";
 
 export function Navigation() {
   const router = useRouter();
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 50);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const navLinks = [
     { name: "Work", href: "/#work" },
@@ -49,14 +49,15 @@ export function Navigation() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-white/5"
-            : "bg-transparent"
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/5"
+        // className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        //   isScrolled
+        //     ? "bg-background/80 backdrop-blur-md border-b border-white/5"
+        //     : "bg-transparent"
+        // }`}
+        // initial={{ y: -100 }}
+        // animate={{ y: 0 }}
+        // transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-4">

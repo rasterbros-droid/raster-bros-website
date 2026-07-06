@@ -144,7 +144,12 @@ export default function ProjectDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {project.title}
+              {project?.songTitle}
+              {/* <span className=" text-sm md:text-base text-white/60 mt-2"> */}
+                            <span className="ml-[15%] block text-lg md:text-2xl lg:text-3xl font-display font-semibold leading-none mb-6">
+
+                {project?.singer}
+              </span>
             </motion.h1>
 
             <motion.div
@@ -176,7 +181,10 @@ export default function ProjectDetail() {
       {/* Song Video */}
       {songVideoEmbedUrl && (
         <section className="container mx-auto px-6 py-20">
-          <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">Song Video</h2>
+          {/* <h2 className="text-sm uppercase tracking-widest text-white/50 ">Song Video</h2> */}
+           <span className="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm uppercase tracking-widest text-white/60 mb-8">
+                  Song Video
+                </span>
           <motion.div
             className="aspect-video bg-black rounded-sm overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -207,7 +215,10 @@ export default function ProjectDetail() {
       <section className="container mx-auto px-6 py-32">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-4">
-            <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">Project Overview</h2>
+            {/* <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">Project Overview</h2> */}
+             <span className="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm uppercase tracking-widest text-white/60 mb-8">
+                  Project Overview
+                </span>
           </div>
           <div className="md:col-span-8 space-y-8">
             <motion.div
@@ -252,7 +263,10 @@ export default function ProjectDetail() {
       {/* BTS Video */}
       {btsVideoEmbedUrl && (
         <section className="container mx-auto px-6 py-20">
-          <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">BTS Video</h2>
+          {/* <h2 className="text-sm uppercase tracking-widest text-white/50 mb-8">BTS Video</h2> */}
+          <span className="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm uppercase tracking-widest text-white/60 mb-8">
+                  BTS Video
+                </span>
           <motion.div
             className="aspect-video bg-black rounded-sm overflow-hidden"
             initial={{ opacity: 0, y: 30 }}

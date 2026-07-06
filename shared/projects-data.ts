@@ -1,17 +1,17 @@
 import type { InsertProject } from "../src/lib/schema";
 
-// Raster Bros Projects Data
+// RasterBros Projects Data
 // Easy to update - just add new objects to this array
 // Video fields accept: YouTube video ID, full YouTube URL, or iframe embed HTML
 
 export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   // {
-  //   title: "Digital Alchemy",
+  //   songTitle: "Digital Alchemy",
   //   category: "Digital Art",
   //   description: "A groundbreaking digital art project blending visual effects and creative storytelling.",
   //   detailedDescription: "Digital Alchemy represents the pinnacle of creative digital production. We combined cutting-edge visual effects, animation, and cinematography to create a mesmerizing experience. This project showcases our ability to push the boundaries of what's possible in digital media, creating immersive content that captivates and inspires audiences.",
   //   imageUrl: "https://images.unsplash.com/photo-1519315901367-f8460dd60519?w=1600&h=1200&fit=crop",
-  //   year: "2024",
+  //   year: "2026",
   //   slug: "digital-alchemy",
   //   isFeatured: true,
   //   workType: "movie",
@@ -32,7 +32,127 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   //   embeddedVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
   // },
   {
-    title: "Bapu Chacha - Gurmanter",
+    songTitle: "Muddat",
+    singer: "Bunny Johal",
+
+    category: "Song",
+    description:
+      "A cinematic thriller exploring the depths of human psychology through stunning visuals and masterful storytelling.",
+    detailedDescription:
+      "Muddat - Bunny Johal is a feature-length psychological thriller that showcases our expertise in cinematic storytelling. We handled the complete production from pre-production planning to post-production editing, creating a visually stunning narrative that captivates audiences from start to finish.",
+    imageUrl:
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Website%20Project%20Poster%20491x654/Muddat%20-%20Bunny%20Johal.jpg",
+    year: "2026",
+    slug: "muddat-bunny-johal",
+    isFeatured: true,
+    workType: "song",
+    bannerVideo:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    carouselImages: [
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Project%20Background%20Slider%20-%201600x900%20px/1.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Project%20Background%20Slider%20-%201600x900%20px/2.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Project%20Background%20Slider%20-%201600x900%20px/3.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Project%20Background%20Slider%20-%201600x900%20px/4.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Project%20Background%20Slider%20-%201600x900%20px/5.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Muddat%20-%20Bunny%20Johal/Project%20Background%20Slider%20-%201600x900%20px/6.jpg",
+    ],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
+    ],
+    embeddedVideoSong: "OvfQzOLBpM4?si=AB0x1xGVk5P6LGph",
+    embeddedVideoBTS: "OvfQzOLBpM4?si=AB0x1xGVk5P6LGph",
+  },
+  {
+    songTitle: "Laare Lappe",
+    singer: "Gurshabad , Choudhary",
+    category: "Song",
+    description:
+      "A cinematic thriller exploring the depths of human psychology through stunning visuals and masterful storytelling.",
+    detailedDescription:
+      "Laare Lappe - Gurshabad , Choudhary is a feature-length psychological thriller that showcases our expertise in cinematic storytelling. We handled the complete production from pre-production planning to post-production editing, creating a visually stunning narrative that captivates audiences from start to finish.",
+    imageUrl:
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Laare%20Lappe%20-%20Gurshabad%20%2C%20Choudhary/Poster%20491x654/1.jpg",
+    year: "2026",
+    slug: "laare-lappe-gurshabad-choudhary",
+    isFeatured: true,
+    workType: "song",
+    bannerVideo:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    carouselImages: [
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Laare%20Lappe%20-%20Gurshabad%20%2C%20Choudhary/Background%20Slider%20-%201600x900%20px/10.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Laare%20Lappe%20-%20Gurshabad%20%2C%20Choudhary/Background%20Slider%20-%201600x900%20px/13.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Laare%20Lappe%20-%20Gurshabad%20%2C%20Choudhary/Background%20Slider%20-%201600x900%20px/17.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Laare%20Lappe%20-%20Gurshabad%20%2C%20Choudhary/Background%20Slider%20-%201600x900%20px/5.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Laare%20Lappe%20-%20Gurshabad%20%2C%20Choudhary/Background%20Slider%20-%201600x900%20px/9.jpg",
+    ],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
+    ],
+    embeddedVideoSong: "D4Q4-M5D12o?si=y9UBE_rBlRttMrcM",
+    embeddedVideoBTS: "D4Q4-M5D12o?si=y9UBE_rBlRttMrcM",
+  },
+  {
+    songTitle: "Fantastic 1",
+    singer: "Dulla , Deepak Dhillon",
+    category: "Song",
+    description:
+      "A cinematic thriller exploring the depths of human psychology through stunning visuals and masterful storytelling.",
+    detailedDescription:
+      "Fantastic 1 - Dulla , Deepak Dhillon is a feature-length psychological thriller that showcases our expertise in cinematic storytelling. We handled the complete production from pre-production planning to post-production editing, creating a visually stunning narrative that captivates audiences from start to finish.",
+    imageUrl:
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Fantastic%201%20-%20Dulla%20%2C%20Deepak%20Dhillon/Website%20Project%20Poster%20491x654/Fantastic%201.jpg",
+    year: "2026",
+    slug: "fantastic-1-dulla-deepak-dhillon",
+    isFeatured: true,
+    workType: "song",
+    bannerVideo:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    carouselImages: [
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Fantastic%201%20-%20Dulla%20%2C%20Deepak%20Dhillon/Project%20Background%20Slider%20-%201600x900%20px/1.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Fantastic%201%20-%20Dulla%20%2C%20Deepak%20Dhillon/Project%20Background%20Slider%20-%201600x900%20px/2.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Fantastic%201%20-%20Dulla%20%2C%20Deepak%20Dhillon/Project%20Background%20Slider%20-%201600x900%20px/3.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Fantastic%201%20-%20Dulla%20%2C%20Deepak%20Dhillon/Project%20Background%20Slider%20-%201600x900%20px/5.jpg",
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Fantastic%201%20-%20Dulla%20%2C%20Deepak%20Dhillon/Project%20Background%20Slider%20-%201600x900%20px/9.jpg",
+    ],
+    galleryImages: [
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=1200&h=800&fit=crop",
+    ],
+    embeddedVideoSong: "lTI_zV_cDeY?si=jOKZTPmWkg57Exuz",
+    embeddedVideoBTS: "lTI_zV_cDeY?si=jOKZTPmWkg57Exuz",
+  },
+  {
+    songTitle: "Bapu Chacha",
+    singer: "Gurmanter",
     category: "Song",
     description:
       "A cinematic thriller exploring the depths of human psychology through stunning visuals and masterful storytelling.",
@@ -40,7 +160,7 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
       "Bapu Chacha - Gurmanter is a feature-length psychological thriller that showcases our expertise in cinematic storytelling. We handled the complete production from pre-production planning to post-production editing, creating a visually stunning narrative that captivates audiences from start to finish.",
     imageUrl:
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Bapu%20Chacha%20-%20Gurmanter/Website%20Project%20Poster%20491x654/Bapu%20Chacha.webp",
-    year: "2024",
+    year: "2026",
     slug: "bapu-chacha-gurmanter",
     isFeatured: true,
     workType: "song",
@@ -68,14 +188,14 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     embeddedVideoBTS: "es4gXbPKAGg?si=Kx-A2xNe2ayXetqg",
   },
   //  {
-  //   title: "Tere Vangu - Nirvair Pannu",
+  //   songTitle: "Tere Vangu - Nirvair Pannu",
   //   category: "Song",
   //   description: "An award-winning short film exploring themes of memory and loss through poetic cinematography.",
   //   detailedDescription: "Echoes is a short film that demonstrates our ability to create emotionally resonant narratives through visual storytelling. The project required careful attention to cinematography, color grading, and sound design to create an immersive experience. The film has been selected for multiple film festivals and showcases our commitment to artistic excellence.",
   //   // imageUrl: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&h=1200&fit=crop",
   //       imageUrl: "/home_page_card_images/Tere Vangu.webp",
 
-  //   year: "2023",
+  //   year: "2026",
   //   slug: "tere-vangu-nirvair-pannu",
   //   isFeatured: true,
   //   workType: "song",
@@ -101,7 +221,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   //   embeddedVideo: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
   // },
   {
-    title: "Together - Nirvair Pannu",
+    songTitle: "Together",
+    singer: "Nirvair Pannu",
     category: "Song",
     description:
       "A high-octane commercial showcasing a luxury sports car through dynamic cinematography and precision editing.",
@@ -111,7 +232,7 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     imageUrl:
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Together%20-%20Nirvair%20Pannu/Website%20Project%20Poster%20491x654/Together.webp",
 
-    year: "2024",
+    year: "2026",
     slug: "together-nirvair-pannu",
     isFeatured: true,
     workType: "song",
@@ -141,7 +262,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     embeddedVideoBTS: "MGbZjux4fTU?si=hfwjSEDVUv_7wfah",
   },
   {
-    title: "Kirpaan - Manjit Singh Sohi",
+    songTitle: "Kirpaan",
+    singer: "Manjit Singh Sohi",
     category: "Song",
     description:
       "Complete video coverage of a major fashion week event, capturing runway shows and behind-the-scenes moments.",
@@ -151,7 +273,7 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     imageUrl:
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Kirpan%20-Manjit%20Singh%20Sohi/Website%20Project%20Poster%20491x654/Kirpaan.webp",
 
-    year: "2024",
+    year: "2026",
     slug: "kirpaan-manjit-singh-sohi",
     isFeatured: true,
     workType: "movie",
@@ -183,7 +305,8 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   },
 
   {
-    title: "Phullan Wali Car - Khushi Pandher",
+    songTitle: "Phullan Wali Car",
+    singer: "Khushi Pandher",
     category: "song",
     description:
       "A comprehensive corporate documentary telling the story of a tech company's journey and innovation.",
@@ -193,7 +316,7 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     imageUrl:
       "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Phullan%20Wali%20Car%20-%20Khushi%20Pandher/Website%20Project%20Poster%20491x654/Phullan%20Wali%20Car.webp",
 
-    year: "2024",
+    year: "2026",
     slug: "phullan-wali-car-khushi-pandher",
     isFeatured: true,
     workType: "song",
@@ -222,13 +345,13 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     embeddedVideoBTS: "lEbZ7TeSjt4?si=178BuY4F6FIKMIEI",
   },
   // {
-  //   title: "Recce Day - RasterBros",
+  //   songTitle: "Recce Day - RasterBros",
   //   category: "Biography",
   //   description: "A visually stunning music video combining performance footage with abstract visual elements.",
   //   detailedDescription: "This music video project allowed us to push creative boundaries, combining live performance footage with abstract visual elements and experimental cinematography. We worked closely with the artist to develop a visual language that complemented the music, creating a cohesive artistic statement through innovative camera work, lighting design, and post-production effects.",
   //   // imageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1600&h=1200&fit=crop",
   //       imageUrl: "/home_page_card_images/Recce Day.webp",
-  //   year: "2024",
+  //   year: "2026",
   //   slug: "recce-day-rasterbros",
   //   isFeatured: true,
   //   workType: "videography",
@@ -255,16 +378,18 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   // },
 
   {
-    title: "Khusiyan - Sajjan Adeeb",
+    songTitle: "Khusiyan",
+    singer: "Sajjan Adeeb",
     category: "Song",
     description:
       "High-end product photography and lifestyle imagery for a luxury fashion brand's seasonal campaign.",
     detailedDescription:
       "This luxury brand campaign showcases our expertise in high-end product photography and lifestyle imagery. We created a cohesive visual narrative across multiple product categories, working closely with stylists and art directors to achieve the brand's sophisticated aesthetic. The project involved studio photography, location shoots, and extensive post-production retouching.",
     // imageUrl: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&h=1200&fit=crop",
-    imageUrl: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Poster/Khushiyan%20-%20Sajjan%20Adeeb.jpg",
+    imageUrl:
+      "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/projects/Khushian%20-%20Sajjan%20Adeeb/Poster/Khushiyan%20-%20Sajjan%20Adeeb.jpg",
 
-    year: "2023",
+    year: "2026",
     slug: "khusiyan-sajjan-adeeb",
     isFeatured: true,
     workType: "song",
@@ -292,14 +417,14 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
     embeddedVideoBTS: "T7kL3DBYESU?si=NIruDZc131X0v1se",
   },
   // {
-  //   title: "Wedding Photography Collection",
+  //   songTitle: "Wedding Photography Collection",
   //   category: "Photography",
   //   description: "An elegant collection of wedding photography capturing intimate moments and grand celebrations.",
   //   detailedDescription: "This wedding photography collection showcases our ability to capture authentic emotions and beautiful moments. We worked throughout the entire wedding day, from preparation to reception, creating a comprehensive visual story. The project required expertise in various lighting conditions, candid photography, and formal portraiture, all while maintaining a consistent artistic vision.",
   //   // imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&h=1200&fit=crop",
   //       imageUrl: "/home_page_card_images/Beyond The Skies.webp",
 
-  //   year: "2024",
+  //   year: "2026",
   //   slug: "wedding-photography-collection",
   //   isFeatured: true,
   //   workType: "photography",
@@ -320,14 +445,14 @@ export const rasterBrosProjects: Omit<InsertProject, "id">[] = [
   //   embeddedVideo: null,
   // },
   // {
-  //   title: "Digital Series: Code Breakers",
+  //   songTitle: "Digital Series: Code Breakers",
   //   category: "Web Series",
   //   description: "A tech-focused web series exploring the world of cybersecurity through documentary-style storytelling.",
   //   detailedDescription: "Code Breakers is a documentary web series that combines expert interviews, real-world scenarios, and engaging visualizations to explore cybersecurity topics. We handled all production aspects including research, script development, filming, and post-production. The series required translating complex technical concepts into accessible visual narratives while maintaining accuracy and engagement.",
   //   // imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&h=1200&fit=crop",
   //       imageUrl: "/home_page_card_images/Beyond The Skies.webp",
 
-  //   year: "2024",
+  //   year: "2026",
   //   slug: "code-breakers",
   //   isFeatured: true,
   //   workType: "web-series",

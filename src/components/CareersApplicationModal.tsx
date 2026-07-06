@@ -256,7 +256,7 @@ export default function CareersApplicationModal({
 
         <div className="border-b border-white/10 px-6 py-5 sm:px-8">
           <p className="text-[10px] uppercase tracking-[0.24em] text-white/50">Studio Entry</p>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl">Apply to Raster Bros</h2>
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl">Apply to RasterBros</h2>
           <p className="mt-1 text-sm text-white/60">Not a job application. A studio entry.</p>
           {roleTitle && (
             <p className="mt-3 inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1 text-xs text-white/80">
@@ -440,7 +440,7 @@ export default function CareersApplicationModal({
                     label="Why RasterBros?"
                     value={formData.whyRasterBros}
                     onChange={(value) => setField("whyRasterBros", value)}
-                    placeholder="One line on why you want to enter Raster Bros"
+                    placeholder="One line on why you want to enter RasterBros"
                     error={errors.whyRasterBros}
                     rows={3}
                   />

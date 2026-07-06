@@ -115,10 +115,10 @@ export default function CareersPage() {
   return (
     <>
       <Head>
-        <title>Careers | Raster Bros</title>
+        <title>Careers | RasterBros</title>
         <meta
           name="description"
-          content="Build ambitious film and digital work with Raster Bros. Explore open roles and join our team."
+          content="Build ambitious film and digital work with RasterBros. Explore open roles and join our team."
         />
       </Head>
 
@@ -136,7 +136,7 @@ export default function CareersPage() {
               <div className="flex items-center mt-3">
                 <img
                   src="/Rasterbros-Title.png"
-                  alt="Raster Bros"
+                  alt="RasterBros"
                   className="sm:h-12 h-8 w-auto object-contain block"
                 />
               </div>
@@ -177,7 +177,7 @@ export default function CareersPage() {
               Build the Future of Storytelling
             </p>
             <h1 className="font-display text-4xl font-semibold tracking-tight md:text-6xl">
-              Careers at Raster Bros
+              Careers at RasterBros
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
               Join a team where innovation, growth, and real impact shape every

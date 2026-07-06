@@ -3,7 +3,8 @@ import { z } from "zod";
 // Schema definitions
 const ProjectSchema = z.object({
   id: z.string(),
-  title: z.string(),
+  songTitle: z.string(),
+  singer: z.string().optional(),
   description: z.string(),
   slug: z.string(),
   image: z.string().optional(),

@@ -1,4 +1,4 @@
-# Raster Bros — Next.js (CSR)
+# RasterBros — Next.js (CSR)
 
 This folder contains a Next.js version of the original Vite React website, configured to run in CSR mode (SPA behavior preserved).
 

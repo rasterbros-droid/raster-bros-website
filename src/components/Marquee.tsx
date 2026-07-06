@@ -25,7 +25,7 @@ export default function ImageMarquee() {
   return (
     <div className="w-full overflow-hidden py-10 bg-black">
        <div className="container mx-auto mb-12">
-          <h2 className="text-3xl md:text-6xl font-display font-bold ml-6 sm:ml-10">
+          <h2 className="text-2xl md:text-4xl font-display font-bold">
           Where Talent Meets Vision</h2>
         </div>
 
@@ -52,7 +52,6 @@ export default function ImageMarquee() {
           }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
-
           <img
             src={src}
             alt="artist"
@@ -66,14 +65,9 @@ export default function ImageMarquee() {
               pointer-events-none
             "
           />
-
         </motion.div>
-
         ))}
-
-
       </motion.div>
-
     </div>
   );
 }

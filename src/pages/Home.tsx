@@ -162,7 +162,7 @@ export default function Home() {
             <div className="relative grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
               <div className="md:col-span-4">
                 <span className="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm uppercase tracking-widest text-white/60">
-                  About Raster Bros
+                  About RasterBros
                 </span>
               </div>
               <div className="md:col-span-8">
@@ -226,7 +226,7 @@ export default function Home() {
             Selected Work
           </h2>
           <span className="hidden md:inline-block text-white/40">
-            {/* (2023 — 2024) */}
+            {/* (2025 — 2026) */}
         {/* </span>
         </div>
 
@@ -252,7 +252,7 @@ export default function Home() {
         {/* Latest Releases - Carousel (below Selected Work) */}
         <section id="work" className="px-6 py-12 md:py-16 lg:py-20">
           <div className="container mx-auto mb-8 md:mb-10 lg:mb-12">
-            <h2 className="text-4xl md:text-6xl font-display font-bold">
+            <h2 className="text-2xl md:text-4xl font-display font-bold">
               Latest Releases
             </h2>
           </div>
@@ -451,7 +451,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col justify-end items-start md:items-end">
               <div className="space-y-2 text-right">
-                <p>Raster Bros Creative Studio</p>
+                <p>RasterBros Creative Studio</p>
                 <p>Available Worldwide</p>
                 <p>+91 9149613372</p>
               </div>
@@ -459,7 +459,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-black/10 text-sm opacity-60">
-            <p>&copy; 2026 Raster Bros. All rights reserved.</p>
+            <p>&copy; 2026 RasterBros. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
               <a href="https://www.instagram.com/rasterbros?igsh=ZHFxNWoxYWRuMXln" target="blank" className="hover:text-black transition-colors cursor-pointer">
                 Instagram
