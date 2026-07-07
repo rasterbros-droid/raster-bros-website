@@ -194,7 +194,7 @@ export default function ProjectDetail() {
           >
             <iframe
               src={songVideoEmbedUrl}
-              title={`${project.title} song video`}
+              title={`${project.songTitle} song video`}
               className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
@@ -276,7 +276,7 @@ export default function ProjectDetail() {
           >
             <iframe
               src={btsVideoEmbedUrl}
-              title={`${project.title} bts video`}
+              title={`${project.songTitle} bts video`}
               className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
@@ -378,7 +378,7 @@ export default function ProjectDetail() {
                         <div className="raster-orbit-card group relative h-full w-full overflow-hidden border border-black/10 bg-black/15 shadow-[0_14px_30px_rgba(0,0,0,0.2)]">
                           <img
                             src={img}
-                            alt={`${project.title} frame ${i + 1}`}
+                            alt={`${project.songTitle} frame ${i + 1}`}
                             className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                             loading="lazy"
                           />
@@ -409,7 +409,7 @@ export default function ProjectDetail() {
               >
                 <img
                   src={project.galleryImages[0]}
-                  alt={`${project.title} hero frame`}
+                  alt={`${project.songTitle} hero frame`}
                   className="h-full w-full object-cover"
                   loading="eager"
                 />
@@ -431,7 +431,7 @@ export default function ProjectDetail() {
                   >
                     <img
                       src={img}
-                      alt={`${project.title} frame ${i + 2}`}
+                      alt={`${project.songTitle} frame ${i + 2}`}
                       className="h-full w-full object-cover"
                       loading="lazy"
                     />
@@ -446,7 +446,7 @@ export default function ProjectDetail() {
                     key={`${img}-strip-${i}`}
                     className="relative h-24 min-w-[120px] snap-start overflow-hidden rounded-lg border border-white/10"
                   >
-                    <img src={img} alt={`${project.title} strip ${i + 1}`} className="h-full w-full object-cover" loading="lazy" />
+                    <img src={img} alt={`${project.songTitle} strip ${i + 1}`} className="h-full w-full object-cover" loading="lazy" />
                   </div>
                 ))}
               </div>

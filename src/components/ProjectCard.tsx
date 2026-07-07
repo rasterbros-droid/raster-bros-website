@@ -23,7 +23,7 @@ export function ProjectCard({ project, index, className = "", disableAnimation =
           <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
           <img
             src={project?.imageUrl}
-            alt={project?.title}
+            alt={project?.songTitle}
             className="w-full h-[25rem] sm:h-[600px] object-fill transition-transform duration-700 ease-studio group-hover:scale-105 rounded-lg"
           />
         </div>
@@ -31,7 +31,7 @@ export function ProjectCard({ project, index, className = "", disableAnimation =
         <div className="flex justify-between items-start border-t border-white/10 pt-4">
           <div>
             <h3 className="text-2xl font-display font-medium mb-1 group-hover:text-white/70 transition-colors">
-              {project.title}
+              {project?.songTitle}
             </h3>
             <p className="text-sm text-white/50 uppercase tracking-wider">{project?.category}</p>
           </div>

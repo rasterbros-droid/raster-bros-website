@@ -88,7 +88,7 @@ export default function LatestReleaseCarousel({ projects }: LatestReleaseCarouse
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300 z-10" />
                     <img
                       src={project.imageUrl}
-                      alt={project.title}
+                      alt={project.songTitle}
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
@@ -98,7 +98,7 @@ export default function LatestReleaseCarousel({ projects }: LatestReleaseCarouse
                   <div className="flex h-[92px] flex-col justify-between gap-2 px-5 py-4">
                     <div className="min-w-0">
                       <h3 className="truncate text-lg md:text-xl font-display font-semibold text-white/90 group-hover:text-white transition-colors">
-                        {project.title}
+                        {project.songTitle}
                       </h3>
                       <p className="truncate text-xs md:text-sm text-white/50 uppercase tracking-wider">
                         {project.category}
