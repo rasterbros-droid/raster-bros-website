@@ -6,8 +6,9 @@ import { Hero } from "@/components/Hero";
 import { ProjectCard } from "@/components/ProjectCard";
 import ImageMarquee from "@/components/Marquee";
 import LatestReleaseCarousel from "@/components/LatestReleaseCarousel";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { motion } from "framer-motion";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
@@ -20,71 +21,71 @@ export default function Home() {
       name: "Aarav Singh",
       role: "Playback Artist",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/1.jpg",
-      quote:
-        "RasterBros made every frame feel cinematic. Their team understood the emotion of the song from day one.",
+      quote: "Built for the Long Haul!\nRasterBros made every frame feel cinematic. Their team understood the emotion of the song from day one. The entire process was smooth and professional.",
+      rating: 5,
     },
     {
       name: "Meher Kaur",
       role: "Independent Singer",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/2.jpg",
-      quote:
-        "From concept to final cut, the process was smooth, respectful, and creatively sharp. Truly artist-first.",
+      quote: "Truly Artist-First!\nFrom concept to final cut, the process was smooth, respectful, and creatively sharp. Meher Kaur had complete creative input throughout.",
+      rating: 5,
     },
     {
       name: "Kabir Malhotra",
       role: "Film Actor",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/3.jpg",
-      quote:
-        "Professional set culture, clear communication, and incredible visuals. Working with RasterBros felt premium.",
+      quote: "Premium Set Culture!\nProfessional set culture, clear communication, and incredible visuals. Working with RasterBros felt like a premium production.",
+      rating: 5,
     },
     {
       name: "Simran Ahuja",
       role: "Music Composer",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/4.jpg",
-      quote:
-        "They translated sound into visual poetry. Every detail in the final film reflected thought and craft.",
+      quote: "Visual Poetry!\nThey translated sound into visual poetry. Every detail in the final film reflected thought and craft. A truly collaborative partnership.",
+      rating: 5,
     },
     {
       name: "Devansh Thakur",
       role: "Director",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/5.jpg",
-      quote:
-        "Their understanding of pacing, mood, and storytelling helped us create a project we are genuinely proud of.",
+      quote: "Storytelling Excellence!\nTheir understanding of pacing, mood, and storytelling helped us create a project we are genuinely proud of.",
+      rating: 5,
     },
     {
       name: "Naina Oberoi",
       role: "Vocalist",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/6.jpg",
-      quote:
-        "RasterBros gave me complete confidence on camera. The team was prepared, supportive, and creatively fearless.",
+      quote: "Creative Confidence!\nRasterBros gave me complete confidence on camera. The team was prepared, supportive, and creatively fearless.",
+      rating: 5,
     },
     {
       name: "Reyansh Gill",
       role: "Music Producer",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/7.jpg",
-      quote:
-        "The edit quality, transitions, and treatment were world-class. They elevated our track to another level.",
+      quote: "World-Class Quality!\nThe edit quality, transitions, and treatment were world-class. They elevated our track to another level entirely.",
+      rating: 5,
     },
     {
       name: "Ira Bhardwaj",
       role: "Performing Artist",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/8.jpg",
-      quote:
-        "I loved how collaborative the shoot felt. They listened, adapted fast, and delivered beyond expectations.",
+      quote: "Collaborative Excellence!\nI loved how collaborative the shoot felt. They listened, adapted fast, and delivered beyond expectations.",
+      rating: 5,
     },
     {
       name: "Armaan Verma",
       role: "Screenwriter",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/9.jpg",
-      quote:
-        "Rare to find a crew that combines discipline with artistic instinct. RasterBros brought both in full force.",
+      quote: "Discipline & Instinct!\nRare to find a crew that combines discipline with artistic instinct. RasterBros brought both in full force.",
+      rating: 5,
     },
     {
       name: "Tanya Sethi",
       role: "Creative Producer",
       image: "https://pub-7b63f90a5dc84c2eb2eb99e09a79f1bf.r2.dev/RasterBros%20Website/Home-Page/Artists%20Images%20512%20x%20512%20px/ARTISTS%20THUMBNAILS/10.jpg",
-      quote:
-        "If you care about storytelling and execution equally, this is the team to build with. Highly recommended.",
+      quote: "Highly Recommended!\nIf you care about storytelling and execution equally, this is the team to build with. Highly recommended.",
+      rating: 5,
     },
   ];
 
@@ -377,58 +378,17 @@ export default function Home() {
 
         {/* Review Section */}
         <section className="px-6 py-12 md:py-16 lg:py-20 border-t border-white/10 bg-gradient-to-b from-transparent via-white/[0.03] to-transparent">
-          <div className="container mx-auto max-w-6xl">
-            <div className="mb-10 md:mb-12 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-sm uppercase tracking-[0.2em] text-white/70">
-                  Artists Review
-                </p>
-                <h3 className="text-3xl md:text-5xl font-display font-bold mt-3 text-white">
-                  Voices From Our Collaborators
-                </h3>
-              </div>
-              <p className="max-w-xl text-sm md:text-base text-white/80 leading-relaxed">
-                Real experiences from artists who partnered with RasterBros across
-                films, music videos, and commercial stories.
+          <div className="container mx-auto max-w-7xl">
+            <div className="mb-12 md:mb-16">
+              <p className="text-sm uppercase tracking-[0.2em] text-white/70 mb-3">
+                What Are They Saying?
               </p>
+              <h3 className="text-3xl md:text-5xl font-display font-bold text-white">
+                Voices From Our Collaborators
+              </h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-              {testimonials.map((testimonial, index) => (
-                <motion.article
-                  key={testimonial.name}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-10%" }}
-                  transition={{ duration: 0.45, delay: index * 0.04 }}
-                  className="group rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.16] via-white/[0.08] to-white/[0.03] p-5 md:p-6 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:border-white/40 hover:from-white/[0.2] transition-colors"
-                >
-                  <div className="mb-4 flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="h-12 w-12 rounded-full object-cover ring-1 ring-white/25"
-                        loading="lazy"
-                      />
-                      <div>
-                        <p className="text-sm font-semibold text-white leading-tight">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-xs uppercase tracking-wider text-white/70 mt-1">
-                          {testimonial.role}
-                        </p>
-                      </div>
-                    </div>
-                    <Quote className="h-5 w-5 text-white/60 group-hover:text-white transition-colors" />
-                  </div>
-
-                  <p className="text-sm md:text-base text-white/90 leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
-                </motion.article>
-              ))}
-            </div>
+            <TestimonialsCarousel testimonials={testimonials} />
           </div>
         </section>
 
