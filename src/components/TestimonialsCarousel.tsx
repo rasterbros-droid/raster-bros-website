@@ -63,7 +63,7 @@ export default function TestimonialsCarousel({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 p-6 md:p-8 h-full">
                   {/* Image */}
                   <div className="flex items-center justify-center">
-                    <div className="relative w-full max-h-96 md:max-h-[500px] aspect-[3/4] md:aspect-[4/5] rounded-xl overflow-hidden border border-white/20">
+                    <div className="relative w-full max-h-48 md:max-h-[280px] aspect-[3/4] md:aspect-[4/5] rounded-xl overflow-hidden border border-white/20">
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
