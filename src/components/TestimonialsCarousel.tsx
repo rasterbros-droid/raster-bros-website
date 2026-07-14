@@ -67,7 +67,7 @@ export default function TestimonialsCarousel({
                       <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-fit-cover"
                         loading="lazy"
                       />
                     </div>
