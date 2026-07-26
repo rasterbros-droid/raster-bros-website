@@ -85,7 +85,7 @@ export function Navigation() {
                 key={link.name}
                 href={link.href}
                 onClick={handleNavClick(link.href)}
-                className="text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
+                className="font-accent text-sm uppercase tracking-widest font-medium text-white/70 hover:text-white transition-colors relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all group-hover:w-full duration-300" />

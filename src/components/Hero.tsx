@@ -123,7 +123,7 @@ export function Hero() {
 
 
           <motion.p
-            className="max-w-xl text-lg md:text-xl text-white/60 font-light leading-relaxed"
+            className="font-sans max-w-xl text-lg md:text-xl text-white/60 font-light leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}

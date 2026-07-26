@@ -38,7 +38,21 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <div className={`${satoshi.variable} ${inter.variable} ${spaceGrotesk.variable}`}>
+    <>
+      {/*
+        Font variables must live on :root, not on a wrapper element. `body` sets
+        `font-family: var(--font-inter)`, and a variable defined on a child of
+        body is invisible to body itself — the declaration would be dropped and
+        text would fall back to the browser default (Times). Global scope also
+        covers Radix portals, which render outside the React tree.
+      */}
+      <style jsx global>{`
+        :root {
+          --font-satoshi: ${satoshi.style.fontFamily};
+          --font-inter: ${inter.style.fontFamily};
+          --font-space-grotesk: ${spaceGrotesk.style.fontFamily};
+        }
+      `}</style>
       <TooltipProvider>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,6 +61,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <Toaster />
         <WhatsAppButton />
       </TooltipProvider>
-    </div>
+    </>
   );
 }
