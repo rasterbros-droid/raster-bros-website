@@ -17,23 +17,3 @@ export function useProjects() {
     error: null,
   };
 }
-
-export function useProject(slug: string) {
-  // Find project by slug
-  const data = useMemo(() => {
-    if (!slug) return null;
-    const project = rasterBrosProjects.find((p) => p.slug === slug);
-    return project
-      ? ({
-          id: `project-${slug}`,
-          ...project,
-        } as Project)
-      : null;
-  }, [slug]);
-
-  return {
-    data,
-    isLoading: false,
-    error: null,
-  };
-}

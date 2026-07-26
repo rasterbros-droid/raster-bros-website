@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
+import Head from "next/head";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
@@ -20,6 +21,10 @@ export default function ThankYouPage() {
 
   return (
     <div className="relative min-h-screen bg-[#0b0f16] overflow-hidden flex items-center justify-center text-white px-6">
+      <Head>
+        <title>Thank You | RasterBros</title>
+        <meta name="robots" content="noindex, follow" />
+      </Head>
 
       {/* Background Glow Effect */}
       <div className="absolute inset-0">

@@ -1,5 +1,4 @@
-import { useRoute } from "wouter";
-import { useProject } from "@/hooks/use-projects";
+import Head from "next/head";
 import { Navigation } from "@/components/Navigation";
 import { ArrowLeft, Paperclip } from "lucide-react";
 import Link from "next/link";
@@ -8,43 +7,34 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import FlyingPosters from "@/components/FlyingPosters";
 import { resolveYoutubeEmbedUrl } from "@/lib/youtube";
+import type { Project } from "@/lib/schema";
+import { absoluteUrl, projectBreadcrumbJsonLd, projectJsonLd } from "@/lib/seo";
 
-export default function ProjectDetail() {
-  const [, params] = useRoute("/project/:slug");
-  const slug = params?.slug || "";
-  const { data: project, isLoading } = useProject(slug);
+type ProjectDetailProps = {
+  project: Project;
+};
 
-  // Scroll to top when project loads or slug changes
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     window.scrollTo(0, 0);
-  //     document.documentElement.scrollTop = 0;
-  //     document.body.scrollTop = 0;
-  //   }, 0);
-  //   return () => clearTimeout(timer);
-  // }, [slug]);
-
+export default function ProjectDetail({ project }: ProjectDetailProps) {
   const [index, setIndex] = useState(0);
 
   const heroImages = useMemo(() => {
-    if (!project) return [];
     if (project.carouselImages?.length) return project.carouselImages;
     if (project.galleryImages?.length) return project.galleryImages.slice(0, 5);
     return [project.imageUrl];
   }, [project]);
 
   const songVideoEmbedUrl = useMemo(
-    () => resolveYoutubeEmbedUrl(project?.embeddedVideoSong),
-    [project?.embeddedVideoSong],
+    () => resolveYoutubeEmbedUrl(project.embeddedVideoSong),
+    [project.embeddedVideoSong],
   );
   const btsVideoEmbedUrl = useMemo(
-    () => resolveYoutubeEmbedUrl(project?.embeddedVideoBTS),
-    [project?.embeddedVideoBTS],
+    () => resolveYoutubeEmbedUrl(project.embeddedVideoBTS),
+    [project.embeddedVideoBTS],
   );
 
   useEffect(() => {
     setIndex(0);
-  }, [slug]);
+  }, [project.slug]);
 
   useEffect(() => {
     if (heroImages.length <= 1) return;
@@ -54,32 +44,8 @@ export default function ProjectDetail() {
     return () => clearInterval(timer);
   }, [heroImages]);
 
-  if (isLoading) {
-    return (
-      <div className="bg-background min-h-screen text-foreground">
-        <Navigation />
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-pulse text-white/50">Loading project...</div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!project) {
-    return (
-      <div className="bg-background min-h-screen text-foreground">
-        <Navigation />
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <h1 className="text-4xl font-display mb-4">Project not found</h1>
-            <Link href="/" className="text-white/60 hover:text-white transition-colors">
-              Return to home
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const pageTitle = `${project.songTitle}${project.singer ? ` - ${project.singer}` : ""} | RasterBros`;
+  const canonicalUrl = absoluteUrl(`/project/${project.slug}`);
 
   const workTypeLabels: Record<string, string> = {
     movie: "Movie Production",
@@ -93,7 +59,27 @@ export default function ProjectDetail() {
   const orbitFrames = featuredFrames.slice(0, 12);
 
   return (
-    <div className="bg-background min-h-screen text-foreground">
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={project.description} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="video.other" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={project.description} />
+        <meta property="og:image" content={project.imageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd(project)) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectBreadcrumbJsonLd(project)) }}
+        />
+      </Head>
+      <div className="bg-background min-h-screen text-foreground">
       <Navigation />
 
       {/* Hero images with ease in and out */}
@@ -477,7 +463,8 @@ export default function ProjectDetail() {
           </motion.div>
         </Link>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
 

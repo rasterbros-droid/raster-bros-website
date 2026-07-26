@@ -120,6 +120,7 @@ export default function CareersPage() {
           name="description"
           content="Build ambitious film and digital work with RasterBros. Explore open roles and join our team."
         />
+        <link rel="canonical" href="https://www.rasterbros.com/careers" />
       </Head>
 
       <div className="min-h-screen overflow-x-hidden bg-background text-foreground">

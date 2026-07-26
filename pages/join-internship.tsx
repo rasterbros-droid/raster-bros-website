@@ -1,19 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
+import Head from "next/head";
 import { Search, FileText, CheckCircle, Users, LogIn, Eye, Award, ArrowRight, ArrowDown } from "lucide-react";
 import ApplicationFormModal from "../src/components/ApplicationFormModal"; // Adjust path if needed
+import { Navigation } from "../src/components/Navigation";
 
-const Navigation = dynamic(
-  () => import("../src/components/Navigation").then((mod) => mod.Navigation),
-  { ssr: false }
-);
+const PAGE_TITLE = "Internships | RasterBros";
+const PAGE_DESCRIPTION =
+  "Hands-on internships inside a professional film & entertainment studio. Small batches, real exposure, clear ethics.";
 
 export default function JoinInternship() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="min-h-screen bg-[#0b0f16] text-white font-sans">
+      <Head>
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <link rel="canonical" href="https://www.rasterbros.com/join-internship" />
+      </Head>
       <Navigation />
 
       {/* HERO */}

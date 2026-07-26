@@ -1,7 +1,9 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
-// import { CustomCursor } from '@/components/CustomCursor';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { Toaster } from '@/components/ui/toaster';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 // Global styles (Tailwind + app CSS)
 import '@/index.css';
@@ -35,17 +37,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <TooltipProvider>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>RasterBros - Turning Vision Into Pixels</title>
-        <meta
-          name="description"
-          content="A creative film studio crafting cinematic stories through craft, technology, and intent."
-        />
       </Head>
-      {/* <CustomCursor /> */}
       <Component {...pageProps} />
-    </>
+      <Toaster />
+      <WhatsAppButton />
+    </TooltipProvider>
   );
 }

@@ -9,6 +9,11 @@ import LatestReleaseCarousel from "@/components/LatestReleaseCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { absoluteUrl, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+
+const PAGE_TITLE = "RasterBros - Turning Vision Into Pixels";
+const PAGE_DESCRIPTION =
+  "A creative film studio crafting cinematic stories through craft, technology, and intent.";
 
 export default function Home() {
   const { data: projects, isLoading } = useProjects();
@@ -136,14 +141,25 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>RasterBros - Turning Vision Into Pixels</title>
-        <meta
-          name="description"
-          content="A creative film studio crafting cinematic stories through craft, technology, and intent."
-        />
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <link rel="canonical" href={absoluteUrl("/")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:url" content={absoluteUrl("/")} />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
         <link rel="preconnect" href="https://f.vimeocdn.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
       </Head>
 
       <div className="cursor-focus bg-background min-h-screen text-foreground selection:bg-white selection:text-black overflow-x-hidden">
