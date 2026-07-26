@@ -89,7 +89,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        display: ["var(--font-satoshi)", "sans-serif"],
+        accent: ["var(--font-space-grotesk)", "sans-serif"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
       },

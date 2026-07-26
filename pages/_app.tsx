@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { satoshi, inter, spaceGrotesk } from '@/lib/fonts';
 
 // Global styles (Tailwind + app CSS)
 import '@/index.css';
@@ -37,13 +38,15 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <TooltipProvider>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Component {...pageProps} />
-      <Toaster />
-      <WhatsAppButton />
-    </TooltipProvider>
+    <div className={`${satoshi.variable} ${inter.variable} ${spaceGrotesk.variable}`}>
+      <TooltipProvider>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <Component {...pageProps} />
+        <Toaster />
+        <WhatsAppButton />
+      </TooltipProvider>
+    </div>
   );
 }
